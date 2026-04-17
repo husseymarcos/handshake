@@ -532,8 +532,8 @@ ${gig}
                     onClick={handleGenerate}
                     disabled={isGenerating}
                     className={`py-4 px-10 text-xl font-bold rounded-full transition-all flex items-center space-x-3 ${isGenerating
-                        ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                        : 'bg-blue-600 text-white hover:bg-blue-700 hover:scale-105 active:scale-95 shadow-xl shadow-blue-600/30'
+                      ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                      : 'bg-blue-600 text-white hover:bg-blue-700 hover:scale-105 active:scale-95 shadow-xl shadow-blue-600/30'
                       }`}
                   >
                     {isGenerating ? (
@@ -562,10 +562,10 @@ ${gig}
                       onClick={() => copyToClipboard(generatedCV)}
                       disabled={!generatedCV}
                       className={`text-base font-bold transition-colors flex items-center space-x-2 ${!generatedCV
-                          ? 'text-gray-200 cursor-not-allowed'
-                          : copied
-                            ? 'text-green-600'
-                            : 'text-blue-600 hover:text-blue-700'
+                        ? 'text-gray-200 cursor-not-allowed'
+                        : copied
+                          ? 'text-green-600'
+                          : 'text-blue-600 hover:text-blue-700'
                         }`}
                     >
                       {copied ? <Check size={20} /> : <Copy size={20} />}
