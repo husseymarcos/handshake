@@ -1,0 +1,36 @@
+<%= form_with model: @project, class: "stack" do |f| %>
+  <% if @project.errors.any? %>
+    <div class="form-errors">
+      <ul>
+        <% @project.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <label class="field">
+    <span class="field__label">Name</span>
+    <%= f.text_field :name, class: "input input--massive", required: true %>
+  </label>
+  <label class="field">
+    <span class="field__label">Year</span>
+    <%= f.number_field :year, class: "input input--massive" %>
+  </label>
+  <label class="field">
+    <span class="field__label">Title / role</span>
+    <%= f.text_field :title, class: "input input--massive" %>
+  </label>
+  <label class="field">
+    <span class="field__label">Description</span>
+    <%= f.text_area :description, rows: 5, class: "input input--massive" %>
+  </label>
+  <label class="field">
+    <span class="field__label">Stack</span>
+    <%= f.text_field :stack, class: "input input--massive" %>
+  </label>
+  <label class="field">
+    <span class="field__label">GitHub URL</span>
+    <%= f.url_field :github_url, class: "input input--massive" %>
+  </label>
+  <%= f.submit class: "pill pill--accent" %>
+<% end %>

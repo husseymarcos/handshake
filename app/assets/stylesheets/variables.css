@@ -1,0 +1,28 @@
+@layer base {
+  :root {
+    --bg: #fdfcf8;
+    --ink: #0a0a0a;
+    --muted: #525252;
+    --accent: #2563eb;
+    --accent-ink: #ffffff;
+    --border: #e7e5e0;
+    --card: #ffffff;
+    --shadow: 0 20px 50px rgb(15 23 42 / 8%);
+    --radius: 1.5rem;
+    --font-sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --font-mono: ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  }
+
+  html {
+    font-size: 106%;
+  }
+
+  body {
+    min-height: 100vh;
+    font-family: var(--font-serif);
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.55;
+  }
+}

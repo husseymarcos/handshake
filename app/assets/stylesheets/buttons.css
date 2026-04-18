@@ -1,0 +1,17 @@
+@layer components {
+  .link-button {
+    border: none;
+    background: none;
+    padding: 0;
+    color: var(--accent);
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  form.inline {
+    display: inline;
+  }
+}

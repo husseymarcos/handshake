@@ -1,0 +1,25 @@
+<% content_for :title, "Blueprint — Handshake" %>
+
+<div class="page-header">
+  <h1 class="display">Blueprint template</h1>
+  <p class="lede">Raw Typst for your CV structure. Updating this invalidates cached LLM output so the next resume reflects your changes.</p>
+</div>
+
+<div class="card">
+  <%= form_with model: @user, class: "stack" do |f| %>
+    <% if @user.errors.any? %>
+      <div class="form-errors">
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <label class="field">
+      <span class="field__label">Typst source</span>
+      <%= f.text_area :blueprint_typst, rows: 24, class: "input input--code", placeholder: "Optional — blank uses the default starter structure when generating." %>
+    </label>
+    <%= f.submit "Save blueprint", class: "pill pill--accent" %>
+  <% end %>
+</div>

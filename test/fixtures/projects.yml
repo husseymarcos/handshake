@@ -1,0 +1,8 @@
+handshake:
+  user: alice
+  name: Handshake
+  year: 2026
+  title: Resume tooling
+  description: Typst and Rails
+  stack: Ruby, Typst
+  github_url: https://github.com/example/handshake

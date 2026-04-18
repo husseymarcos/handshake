@@ -1,0 +1,31 @@
+@layer base {
+  .main {
+    max-width: 52rem;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 4rem;
+  }
+
+  .page-header {
+    margin-bottom: 1.75rem;
+  }
+}
+
+@layer components {
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .row--between {
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}

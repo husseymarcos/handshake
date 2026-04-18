@@ -1,0 +1,20 @@
+<% content_for :title, "Sign in — Handshake" %>
+
+<div class="card card--narrow">
+  <h1 class="display">Sign in</h1>
+  <p class="lede">Welcome back. Use the email and password for your library.</p>
+
+  <%= form_with url: session_path, scope: :session, class: "stack" do |f| %>
+    <label class="field">
+      <span class="field__label">Email</span>
+      <%= f.email_field :email, required: true, autocomplete: "username", class: "input input--massive" %>
+    </label>
+    <label class="field">
+      <span class="field__label">Password</span>
+      <%= f.password_field :password, required: true, autocomplete: "current-password", class: "input input--massive" %>
+    </label>
+    <%= f.submit "Sign in", class: "pill pill--accent pill--block" %>
+  <% end %>
+
+  <p class="muted">New here? <%= link_to "Create an account", new_user_path, class: "link" %>.</p>
+</div>

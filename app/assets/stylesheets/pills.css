@@ -1,0 +1,45 @@
+@layer components {
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--ink);
+    cursor: pointer;
+    box-shadow: 0 1px 0 rgb(15 23 42 / 4%);
+  }
+
+  .pill:hover {
+    border-color: #d6d3cd;
+  }
+
+  .pill--accent {
+    background: var(--accent);
+    color: var(--accent-ink);
+    border-color: transparent;
+  }
+
+  .pill--accent:hover {
+    filter: brightness(1.05);
+  }
+
+  .pill--quiet {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .pill--tag {
+    cursor: default;
+  }
+
+  .pill--block {
+    width: 100%;
+  }
+}

@@ -1,0 +1,29 @@
+<% content_for :title, "New resume — Handshake" %>
+
+<div class="page-header">
+  <h1 class="display">Tailor a resume</h1>
+  <p class="lede">Paste the job description (up to <%= Handshake::JOB_DESCRIPTION_MAX_TOKENS %> tokens — we trim with a warning if it runs long). We compile a one-page PDF with Typst.</p>
+</div>
+
+<div class="card">
+  <%= form_with model: @job_application, class: "stack" do |f| %>
+    <% if @job_application.errors.any? %>
+      <div class="form-errors">
+        <ul>
+          <% @job_application.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <label class="field">
+      <span class="field__label">Company</span>
+      <%= f.text_field :company_name, required: true, class: "input input--massive" %>
+    </label>
+    <label class="field">
+      <span class="field__label">Job description</span>
+      <%= f.text_area :job_description, required: true, rows: 16, class: "input input--massive" %>
+    </label>
+    <%= f.submit "Generate PDF", class: "pill pill--accent pill--block" %>
+  <% end %>
+</div>

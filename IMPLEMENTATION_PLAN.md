@@ -87,10 +87,10 @@
 5. Typst CLI compiles to PDF
 6. `pdfinfo` validates: must be exactly 1 page
 7. If validation fails (pages > 1):
-   - Attempt 1: retry with tighter spacing hints in prompt
-   - Attempt 2: retry with smaller font hints
-   - Attempt 3: retry with aggressive content condensation
-   - Attempt 4+: return error "Unable to fit content to one page. Try removing skills or shortening job description."
+  - Attempt 1: retry with tighter spacing hints in prompt
+  - Attempt 2: retry with smaller font hints
+  - Attempt 3: retry with aggressive content condensation
+  - Attempt 4+: return error "Unable to fit content to one page. Try removing skills or shortening job description."
 8. Store validated PDF + Typst source
 9. Cache Typst result for 24 hours
 10. User downloads or views history
@@ -113,13 +113,15 @@
 
 Map all actions to REST resources:
 
-| Resource | Purpose |
-|----------|---------|
-| Sessions | Sign in/out |
-| Users | Edit blueprint template (The Library main view) |
-| Skills | Add/remove skills |
-| Projects | List/add/remove projects |
+
+| Resource     | Purpose                                                    |
+| ------------ | ---------------------------------------------------------- |
+| Sessions     | Sign in/out                                                |
+| Users        | Edit blueprint template (The Library main view)            |
+| Skills       | Add/remove skills                                          |
+| Projects     | List/add/remove projects                                   |
 | Applications | Create (generate), list history, show result, download PDF |
+
 
 ---
 

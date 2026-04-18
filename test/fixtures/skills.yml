@@ -1,0 +1,7 @@
+ruby:
+  user: alice
+  name: Ruby
+
+rails:
+  user: alice
+  name: Rails
