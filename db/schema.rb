@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_18_011929) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_19_014136) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -39,7 +39,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_18_011929) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "job_applications", force: :cascade do |t|
+  create_table "opportunities", force: :cascade do |t|
     t.string "company_name", null: false
     t.datetime "created_at", null: false
     t.text "generated_typst"
@@ -47,7 +47,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_18_011929) do
     t.boolean "job_description_truncated", default: false, null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
-    t.index ["user_id"], name: "index_job_applications_on_user_id"
+    t.index ["user_id"], name: "index_opportunities_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -85,14 +85,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_18_011929) do
     t.datetime "blueprint_updated_at", null: false
     t.datetime "created_at", null: false
     t.string "email", null: false
+    t.string "handle"
     t.string "password_digest", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["handle"], name: "index_users_on_handle", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "job_applications", "users"
+  add_foreign_key "opportunities", "users"
   add_foreign_key "projects", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "skills", "users"

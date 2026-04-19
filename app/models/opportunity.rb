@@ -1,6 +1,4 @@
-class JobApplication < ApplicationRecord
-  self.table_name = "job_applications"
-
+class Opportunity < ApplicationRecord
   class UnableToFitOnePage < StandardError
     def to_s
       "Unable to fit content to one page. Try removing skills or shortening job description."

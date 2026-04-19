@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.touch_blueprint!(user_update_params[:blueprint_typst].to_s)
-      redirect_to career_path, notice: "Career updated."
+      redirect_to carreer_path, notice: "Career updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     def require_self
       return if Current.user == @user
 
-      redirect_to career_path, alert: "That account is not yours."
+      redirect_to carreer_path, alert: "That account is not yours."
     end
 
     def user_create_params

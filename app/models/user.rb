@@ -28,7 +28,7 @@ class User < ApplicationRecord
   has_many :sessions, dependent: :destroy
   has_many :skills, dependent: :destroy
   has_many :projects, dependent: :destroy
-  has_many :job_applications, dependent: :destroy
+  has_many :opportunities, dependent: :destroy
 
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :blueprint_updated_at, presence: true

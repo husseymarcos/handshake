@@ -2,7 +2,7 @@
   .card {
     background: var(--card);
     border-radius: var(--radius);
-    padding: 1.5rem 1.75rem;
+    padding: 2rem 2.5rem;
     box-shadow: var(--shadow);
     border: 1px solid rgb(231 229 224 / 80%);
   }
