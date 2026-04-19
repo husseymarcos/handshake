@@ -16,6 +16,8 @@
 
   html {
     font-size: 106%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
@@ -24,5 +26,15 @@
     color: var(--ink);
     background: var(--bg);
     line-height: 1.55;
+  }
+
+  /* Ensure inputs have proper color contrast */
+  input, textarea, select {
+    color: var(--ink);
+  }
+
+  /* Ensure buttons have proper color contrast */
+  button {
+    color: var(--ink);
   }
 }

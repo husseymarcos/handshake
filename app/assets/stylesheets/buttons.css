@@ -11,6 +11,10 @@
     text-underline-offset: 0.15em;
   }
 
+  .link-button:hover {
+    text-decoration-thickness: 2px;
+  }
+
   form.inline {
     display: inline;
   }

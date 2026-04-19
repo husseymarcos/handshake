@@ -1,20 +1,31 @@
-<% content_for :title, "Sign in — Handshake" %>
+<% content_for :title, "Log In — Handshake" %>
 
-<div class="card card--narrow">
-  <h1 class="display">Sign in</h1>
-  <p class="lede">Welcome back. Use the email and password for your library.</p>
+<div class="login-page">
+  <div class="login-card">
+    <h1 class="login-title">Handshake.</h1>
 
-  <%= form_with url: session_path, scope: :session, class: "stack" do |f| %>
-    <label class="field">
-      <span class="field__label">Email</span>
-      <%= f.email_field :email, required: true, autocomplete: "username", class: "input input--massive" %>
-    </label>
-    <label class="field">
-      <span class="field__label">Password</span>
-      <%= f.password_field :password, required: true, autocomplete: "current-password", class: "input input--massive" %>
-    </label>
-    <%= f.submit "Sign in", class: "pill pill--accent pill--block" %>
-  <% end %>
+    <%= form_with url: session_path, scope: :session, class: "login-form" do |f| %>
+      <div class="login-field">
+        <%= f.email_field :email, 
+          required: true, 
+          autocomplete: "username", 
+          placeholder: "Email address",
+          class: "login-input" %>
+      </div>
+      
+      <div class="login-field">
+        <%= f.password_field :password, 
+          required: true, 
+          autocomplete: "current-password", 
+          placeholder: "Password",
+          class: "login-input" %>
+      </div>
+      
+      <%= f.submit "Log In", class: "login-button" %>
+    <% end %>
 
-  <p class="muted">New here? <%= link_to "Create an account", new_user_path, class: "link" %>.</p>
+    <div class="login-footer">
+      <%= link_to "Need an account? Sign up.", new_user_path, class: "login-link" %>
+    </div>
+  </div>
 </div>

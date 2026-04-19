@@ -5,28 +5,21 @@
     box-sizing: border-box;
   }
 
-  body,
-  h1,
-  h2,
-  h3,
-  p,
-  ul,
-  ol,
-  figure {
+  body, h1, h2, h3, p, ul, ol, figure {
     margin: 0;
   }
 
-  ul,
-  ol {
+  ul, ol {
     padding: 0;
     list-style: none;
   }
 
-  button,
-  input,
-  textarea,
-  select {
+  /* 
+   * Form elements - explicit defaults to avoid cascade surprises
+   */
+  button, input, textarea, select {
     font: inherit;
-    color: inherit;
+    color: #0a0a0a;
+    background-color: transparent;
   }
 }

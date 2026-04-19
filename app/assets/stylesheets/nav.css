@@ -26,6 +26,10 @@
     text-decoration: none;
   }
 
+  .nav__brand:hover {
+    color: var(--accent);
+  }
+
   .nav__links {
     display: flex;
     flex-wrap: wrap;

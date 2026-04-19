@@ -9,14 +9,17 @@
     font-family: var(--font-sans);
     font-weight: 600;
     font-size: 0.85rem;
+    color: var(--ink);
   }
 
   .input {
     width: 100%;
     border-radius: 1rem;
     border: 1px solid transparent;
-    background: rgb(253 252 248 / 80%);
+    background-color: rgb(253 252 248 / 80%);
+    color: var(--ink);
     padding: 0.85rem 1rem;
+    font-weight: 500;
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
   }
 
@@ -24,7 +27,13 @@
     outline: none;
     border-color: var(--accent);
     box-shadow: 0 0 0 3px rgb(37 99 235 / 18%);
-    background: var(--card);
+    background-color: var(--card);
+    color: var(--ink);
+  }
+
+  .input::placeholder {
+    color: var(--muted);
+    opacity: 0.6;
   }
 
   .input--massive {
@@ -45,10 +54,24 @@
     border: 1px solid rgb(220 38 38 / 18%);
     font-family: var(--font-sans);
     font-size: 0.92rem;
+    color: var(--ink);
+  }
+
+  .form-errors h2,
+  .form-errors h3 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #7f1d1d;
   }
 
   .form-errors ul {
     margin: 0.5rem 0 0 1rem;
     list-style: disc;
+    color: #7f1d1d;
+  }
+
+  .form-errors li {
+    margin-bottom: 0.25rem;
   }
 }

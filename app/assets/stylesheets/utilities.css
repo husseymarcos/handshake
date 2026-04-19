@@ -13,4 +13,35 @@
     clip: rect(0, 0, 0, 0);
     border: 0;
   }
+
+  /* Text utilities */
+  .text-center {
+    text-align: center;
+  }
+
+  .text-left {
+    text-align: left;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
+  /* Spacing utilities */
+  .mt-0 { margin-top: 0; }
+  .mt-1 { margin-top: 0.5rem; }
+  .mt-2 { margin-top: 1rem; }
+  .mt-4 { margin-top: 2rem; }
+
+  .mb-0 { margin-bottom: 0; }
+  .mb-1 { margin-bottom: 0.5rem; }
+  .mb-2 { margin-bottom: 1rem; }
+  .mb-4 { margin-bottom: 2rem; }
+
+  /* Display utilities */
+  .block { display: block; }
+  .inline { display: inline; }
+  .inline-block { display: inline-block; }
+  .flex { display: flex; }
+  .hidden { display: none; }
 }

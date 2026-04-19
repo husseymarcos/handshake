@@ -1,34 +1,50 @@
-<% content_for :title, "Sign up — Handshake" %>
+<% content_for :title, "Sign Up — Handshake" %>
 
-<div class="card card--narrow">
-  <h1 class="display">Create your library</h1>
-  <p class="lede">One account holds your blueprint, skills, and projects. Resumes are generated on demand.</p>
+<div class="login-page">
+  <div class="login-card">
+    <h1 class="login-title">Handshake.</h1>
 
-  <%= form_with model: @user, class: "stack" do |f| %>
-    <% if @user.errors.any? %>
-      <div class="form-errors">
-        <h2><%= pluralize(@user.errors.count, "issue") %> to fix</h2>
-        <ul>
-          <% @user.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
+    <%= form_with model: @user, class: "login-form" do |f| %>
+      <% if @user.errors.any? %>
+        <div class="form-errors">
+          <%= pluralize(@user.errors.count, "issue") %> to fix:
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      
+      <div class="login-field">
+        <%= f.email_field :email, 
+          required: true, 
+          autocomplete: "email", 
+          placeholder: "Email address",
+          class: "login-input" %>
       </div>
+      
+      <div class="login-field">
+        <%= f.password_field :password, 
+          required: true, 
+          autocomplete: "new-password", 
+          placeholder: "Password",
+          class: "login-input" %>
+      </div>
+      
+      <div class="login-field">
+        <%= f.password_field :password_confirmation, 
+          required: true, 
+          autocomplete: "new-password", 
+          placeholder: "Confirm password",
+          class: "login-input" %>
+      </div>
+      
+      <%= f.submit "Sign Up", class: "login-button" %>
     <% end %>
-    <label class="field">
-      <span class="field__label">Email</span>
-      <%= f.email_field :email, required: true, autocomplete: "email", class: "input input--massive" %>
-    </label>
-    <label class="field">
-      <span class="field__label">Password</span>
-      <%= f.password_field :password, required: true, autocomplete: "new-password", class: "input input--massive" %>
-    </label>
-    <label class="field">
-      <span class="field__label">Confirm password</span>
-      <%= f.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "input input--massive" %>
-    </label>
-    <%= f.submit "Create account", class: "pill pill--accent pill--block" %>
-  <% end %>
 
-  <p class="muted">Already have an account? <%= link_to "Sign in", new_session_path, class: "link" %>.</p>
+    <div class="login-footer">
+      <%= link_to "Have an account? Log in.", new_session_path, class: "login-link" %>
+    </div>
+  </div>
 </div>

@@ -14,6 +14,8 @@
     color: var(--ink);
     cursor: pointer;
     box-shadow: 0 1px 0 rgb(15 23 42 / 4%);
+    -webkit-appearance: none;
+    appearance: none;
   }
 
   .pill:hover {
@@ -22,17 +24,23 @@
 
   .pill--accent {
     background: var(--accent);
+    background-color: var(--accent);
     color: var(--accent-ink);
     border-color: transparent;
   }
 
   .pill--accent:hover {
     filter: brightness(1.05);
+    color: var(--accent-ink);
   }
 
   .pill--quiet {
     background: transparent;
     box-shadow: none;
+  }
+
+  .pill--quiet:hover {
+    background: rgb(253 252 248 / 50%);
   }
 
   .pill--tag {
