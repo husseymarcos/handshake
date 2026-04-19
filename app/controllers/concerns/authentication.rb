@@ -24,7 +24,7 @@ module Authentication
 
     def require_authentication
       Current.session ||= find_session_by_cookie
-      redirect_to new_session_path unless Current.session
+      redirect_to signin_path unless Current.session
     end
 
     def find_session_by_cookie

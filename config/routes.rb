@@ -3,8 +3,11 @@ Rails.application.routes.draw do
 
   root "opportunities#index"
 
-  resource :session, only: %i[ new create destroy ]
-  resources :users, only: %i[ new create edit update ]
+  resource :session, only: %i[ create destroy ]
+  get "signin", to: "sessions#new", as: :signin
+
+  resources :users, only: %i[ create edit update ]
+  get "signup", to: "users#new", as: :signup
   resources :skills, only: %i[ create destroy ]
   resources :projects
   resources :opportunities, only: %i[ show new create ] do

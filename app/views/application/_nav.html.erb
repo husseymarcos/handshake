@@ -1,51 +1,9 @@
 <header class="nav">
   <div class="nav__inner">
     <% if authenticated? %>
-      <div class="nav__profile">
-        <button class="nav__profile-btn" aria-haspopup="true" aria-expanded="false">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="8" r="4"/>
-            <path d="M4 20v-2a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v2"/>
-          </svg>
-        </button>
-        <div class="nav__profile-menu">
-          <%= link_to "Settings", edit_user_path(Current.user), class: "nav__profile-link" %>
-          <%= button_to "Logout", session_path, method: :delete, class: "nav__profile-link nav__profile-link--button" %>
-        </div>
-      </div>
-    <% end %>
-    <span class="nav__brand">Handshake.</span>
-    <% if authenticated? %>
-      <nav class="nav__links">
-        <%= link_to new_opportunity_path, class: "pill pill--accent pill--with-icon" do %>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="12" y1="18" x2="12" y2="12"/>
-            <line x1="9" y1="15" x2="15" y2="15"/>
-          </svg>
-          Apply
-        <% end %>
-        <%= link_to opportunities_list_path, class: "nav__link" do %>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <polyline points="12 6 12 12 16 14"/>
-          </svg>
-          Opportunities
-        <% end %>
-        <%= link_to carreer_path, class: "nav__link" do %>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-          </svg>
-          Career
-        <% end %>
-      </nav>
-    <% else %>
-      <nav class="nav__links">
-        <%= link_to "Sign in", new_session_path, class: "pill" %>
-        <%= link_to "Sign up", new_user_path, class: "pill pill--accent" %>
-      </nav>
+      <span class="nav__brand">Handshake.</span>
+      <%= render "application/nav_profile" %>
+      <%= render "application/nav_tabs" %>
     <% end %>
   </div>
 </header>

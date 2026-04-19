@@ -142,6 +142,17 @@
     color: var(--ink);
   }
 
+  .nav__link--active {
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 600;
+  }
+
+  .nav__link--active:hover {
+    color: var(--accent-ink);
+    filter: brightness(1.05);
+  }
+
   .nav__link svg {
     width: 1.1rem;
     height: 1.1rem;

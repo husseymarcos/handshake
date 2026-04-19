@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: session_params[:email].to_s.downcase.strip)
     if user&.authenticate(session_params[:password])
       start_new_session_for(user)
-      redirect_to user_url(user)
+      redirect_to root_url
     else
       flash.now[:alert] = "Try another email address or password."
       render :new, status: :unprocessable_entity
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     terminate_session
-    redirect_to new_session_path, notice: "Signed out."
+    redirect_to signin_path, notice: "Signed out."
   end
 
   private

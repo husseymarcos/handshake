@@ -43,6 +43,18 @@
     background: rgb(253 252 248 / 50%);
   }
 
+  .pill--ghost {
+    background: transparent;
+    box-shadow: none;
+    border-color: transparent;
+    color: var(--muted);
+  }
+
+  .pill--ghost:hover {
+    color: var(--ink);
+    background: rgb(253 252 248 / 50%);
+  }
+
   .pill--tag {
     cursor: default;
   }
