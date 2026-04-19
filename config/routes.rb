@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root "job_applications#index"
 
   resource :session, only: %i[ new create destroy ]
-  resources :users, only: %i[ new create show edit update ]
+  resources :users, only: %i[ new create edit update ]
   resources :skills, only: %i[ create destroy ]
   resources :projects
   resources :job_applications, only: %i[ index show new create ] do
@@ -12,4 +12,6 @@ Rails.application.routes.draw do
       resource :download, only: :show
     end
   end
+
+  get "career", to: "users#show", as: :career
 end

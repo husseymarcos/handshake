@@ -3,7 +3,7 @@
     <%= link_to "Handshake", root_path, class: "nav__brand" %>
     <% if authenticated? %>
       <nav class="nav__links">
-        <%= link_to "Library", user_path(current_user), class: "pill" %>
+        <%= link_to "Career", career_path, class: "pill" %>
         <%= link_to "New resume", new_job_application_path, class: "pill pill--accent" %>
         <%= link_to "History", job_applications_path, class: "pill" %>
         <%= button_to "Sign out", session_path, method: :delete, class: "pill pill--quiet", form: { class: "inline" } %>

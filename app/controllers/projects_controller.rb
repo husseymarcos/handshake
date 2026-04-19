@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Current.user.projects.build(project_params)
     if @project.save
-      redirect_to user_path(Current.user), notice: "Project added."
+      redirect_to career_path, notice: "Project added."
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      redirect_to user_path(Current.user), notice: "Project updated."
+      redirect_to career_path, notice: "Project updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy!
-    redirect_to user_path(Current.user), notice: "Project removed."
+    redirect_to career_path, notice: "Project removed."
   end
 
   private
