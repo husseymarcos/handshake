@@ -2,11 +2,6 @@ class OpportunitiesController < ApplicationController
   before_action :set_opportunity, only: %i[ show ]
 
   def index
-    @opportunity = Current.user.opportunities.build
-    @opportunities = Current.user.opportunities.reverse_chronologically
-  end
-
-  def list
     @opportunities = Current.user.opportunities.reverse_chronologically
   end
 

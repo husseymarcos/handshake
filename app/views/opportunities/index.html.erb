@@ -1,43 +1,14 @@
-<% content_for :title, "Apply — Handshake" %>
+<% content_for :title, "Past Opportunities — Handshake" %>
 
-<div class="card">
-  <%= form_with model: @opportunity, class: "stack" do |f| %>
-    <% if @opportunity.errors.any? %>
-      <div class="form-errors">
-        <ul>
-          <% @opportunity.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="field">
-      <label class="field__label">Who are you applying to?</label>
-      <%= f.text_field :company_name, required: true, class: "input input--display", placeholder: "Company Name" %>
-    </div>
-
-    <hr class="form-divider">
-
-    <div class="field">
-      <label class="field__label">What do they want?</label>
-      <%= f.text_area :job_description, required: true, rows: 12, class: "input", placeholder: "Paste the job posting requirements here..." %>
-    </div>
-
-    <div class="form-actions">
-      <%= button_tag type: :submit, class: "btn-adapt" do %>
-        adapt
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="5" y1="12" x2="19" y2="12"/>
-          <polyline points="12 5 19 12 12 19"/>
-        </svg>
-      <% end %>
-    </div>
-  <% end %>
+<div class="page-header row row--between">
+  <div>
+    <h1 class="display">Past Opportunities</h1>
+    <p class="lede">Newest opportunities first.</p>
+  </div>
+  <%= link_to "New Opportunity", new_opportunity_path, class: "pill pill--accent" %>
 </div>
 
 <% if @opportunities.any? %>
-  <h2 class="display" style="margin-top: 2rem; margin-bottom: 1rem;">Past opportunities</h2>
   <ul class="card list-plain stack">
     <% @opportunities.each do |opp| %>
       <li class="history-row">
@@ -51,4 +22,9 @@
       </li>
     <% end %>
   </ul>
+<% else %>
+  <div class="card">
+    <p class="lede">No opportunities yet.</p>
+    <%= link_to "Create your first", new_opportunity_path, class: "pill pill--accent" %>
+  </div>
 <% end %>
