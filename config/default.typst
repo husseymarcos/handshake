@@ -1,0 +1,71 @@
+#set page(
+  paper: "a4",
+  margin: (x: 1.75cm, y: 1.75cm),
+  footer: [
+    #grid(
+      columns: (1fr, 1fr, 1fr),
+      gutter: 0pt,
+      align(left)[#text(size: 9pt, weight: "bold")[Last updated: 2025-03-13]],
+      align(center)[#text(size: 9pt, weight: "bold")[Marcos Hussey]],
+      align(right)[#text(size: 9pt, weight: "bold")[Page #context counter(page).display() / #context counter(page).final().first()]]
+    )
+  ],
+)
+#set text(font: "Libertinus Serif", size: 10.5pt)
+
+#align(center)[
+  #text(size: 18pt, weight: "bold")[Marcos Hussey]
+  #v(1pt)
+  #text(size: 10pt)[Buenos Aires, Argentina]
+  #v(1pt)
+  #text(size: 10pt)[#link("https://linkedin.com/in/marcos-hussey")[LinkedIn] | #link("https://github.com/husseymarcos")[GitHub] | husseymarcos\@gmail.com]
+]
+
+#v(8pt)
+#text(weight: "bold", size: 10.5pt)[ABOUT ME]
+#line(length: 100%, stroke: 0.5pt)
+#v(4pt)
+Final-year Computer Engineering student at Universidad Austral, oriented towards creating efficient software products. I have practical experience in designing scalable backend systems, application development, and cloud infrastructure management. I focus on delivering robust solutions covering the entire software development lifecycle, from initial architecture to production deployment.
+
+#v(8pt)
+#text(weight: "bold", size: 10.5pt)[SKILLS]
+#line(length: 100%, stroke: 0.5pt)
+#v(4pt)
+*Skills:* Kotlin, Java, SQL, TypeScript, React, Spring Boot, NestJS, PostgreSQL, AWS, Azure, Docker, Git
+
+#v(8pt)
+#text(weight: "bold", size: 10.5pt)[PROJECTS]
+#line(length: 100%, stroke: 0.5pt)
+#v(4pt)
+
+#grid(columns: (1fr, auto), [*PrintScript (Custom Language)*], [2024])
+Typed scripting language implemented in Kotlin: lexer, recursive descent parser, and interpreter. Unambiguous grammar, semantic analysis.
+- Stack: Kotlin, Gradle, JUnit.
+
+#v(4pt)
+#grid(columns: (1fr, auto), [*Snippets Platform (with PrintScript)*], [2024])
+Web platform to organize and execute snippets using a custom-built language from scratch. Microservices architecture, sandbox execution.
+- Stack: Spring Boot (Kotlin), Spring Cloud, React, PostgreSQL, Docker. Deploy: Azure.
+
+#v(4pt)
+#grid(columns: (1fr, auto), [*Android Crypto Tracker*], [2025])
+Native app for real-time cryptocurrency prices with alerts and portfolio visualization. REST/WebSocket integration, MVVM architecture.
+- Stack: Kotlin, Jetpack Compose, Coroutines, Retrofit, Room. #link("https://github.com/husseymarcos/MetaCap")[GitHub]
+
+#v(4pt)
+#grid(columns: (1fr, auto), [*Electronic Health Records System (Ophthalmology)*], [2025])
+Portal for ophthalmology clinics: medical records, studies, appointments, and reminders. Confidentiality compliance, role design, and multi-branch scalability.
+- Stack: Spring Boot (Kotlin), Spring Security, JWT, React, PostgreSQL. Deploy: AWS.
+
+#v(8pt)
+#text(weight: "bold", size: 10.5pt)[EDUCATION]
+#line(length: 100%, stroke: 0.5pt)
+#v(4pt)
+#grid(columns: (1fr, auto), [*Universidad Austral*, Buenos Aires], [2021 - Present])
+Computer Engineering (Final-year)
+
+#v(8pt)
+#text(weight: "bold", size: 10.5pt)[ADDITIONAL INFORMATION]
+#line(length: 100%, stroke: 0.5pt)
+#v(4pt)
+Languages: Advanced English.

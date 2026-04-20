@@ -1,27 +1,5 @@
 class User < ApplicationRecord
-  DEFAULT_BLUEPRINT_TYPST = <<~TYP
-    #set page(margin: (x: 1.1cm, y: 1.1cm))
-    #set text(size: 10pt)
-
-    = Your Name
-    #align(center)[email\@example.com · +1-555-0100 · city]
-
-    == Summary
-    Brief positioning statement tailored to the role.
-
-    == Skills
-    - Skill one
-    - Skill two
-
-    == Experience
-    - *Role* at Company (Year) — impact and scope in one line.
-
-    == Projects
-    - *Project* — stack, outcome, link.
-
-    == Education
-    - Degree, Institution (Year)
-  TYP
+  DEFAULT_BLUEPRINT_PATH = Rails.root.join("config/default.typst")
 
   has_secure_password
 
@@ -49,7 +27,11 @@ class User < ApplicationRecord
   end
 
   def blueprint_body
-    blueprint_typst.presence || DEFAULT_BLUEPRINT_TYPST
+    blueprint_typst.presence || self.class.default_blueprint
+  end
+
+  def self.default_blueprint
+    @default_blueprint ||= File.read(DEFAULT_BLUEPRINT_PATH)
   end
 
   def synthesize_typst_for_resume!(company_name:, job_description:, refinement: nil)
