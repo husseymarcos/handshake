@@ -1,8 +1,8 @@
-<% content_for :title, "Blueprint — Handshake" %>
+<% content_for :title, "Profile — Handshake" %>
 
 <div class="page-header">
-  <h1 class="display">Blueprint template</h1>
-  <p class="lede">Raw Typst for your CV structure. Updating this invalidates cached LLM output so the next resume reflects your changes.</p>
+  <h1 class="display">Profile</h1>
+  <p class="lede">Update your account settings.</p>
 </div>
 
 <div class="card">
@@ -17,9 +17,9 @@
       </div>
     <% end %>
     <label class="field">
-      <span class="field__label">Typst source</span>
-      <%= f.text_area :blueprint_typst, rows: 24, class: "input input--code", placeholder: "Optional — blank uses the default starter structure when generating." %>
+      <span class="field__label">Email</span>
+      <%= f.email_field :email, class: "input" %>
     </label>
-    <%= f.submit "Save blueprint", class: "pill pill--accent" %>
+    <%= f.submit "Save changes", class: "pill pill--accent" %>
   <% end %>
 </div>

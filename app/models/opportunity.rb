@@ -24,16 +24,8 @@ class Opportunity < ApplicationRecord
   def generate_resume!
     raise ActiveRecord::RecordInvalid, self unless valid?
 
-    cache_key = user.typst_cache_key_for(company_name, job_description)
-    from_cache = false
-    typst = Rails.cache.read(cache_key)
-    if typst.present?
-      from_cache = true
-    else
-      typst = user.synthesize_typst_for_resume!(company_name:, job_description:, refinement: nil)
-    end
-
-    pdf_bytes, final_typst = compile_pdf_bytes!(cache_key:, typst:, from_cache:)
+    typst = resume_synthesizer.synthesize(company_name:, job_description:, refinement: nil)
+    pdf_bytes, final_typst = compile_pdf_bytes!(typst:)
 
     transaction do
       pdf.attach(
@@ -42,11 +34,14 @@ class Opportunity < ApplicationRecord
         content_type: "application/pdf"
       )
       update!(generated_typst: final_typst)
-      Rails.cache.write(cache_key, final_typst, expires_in: 24.hours)
     end
   end
 
   private
+
+    def resume_synthesizer
+      @resume_synthesizer ||= User::ResumeSynthesizer.new(user)
+    end
 
     def normalize_job_description
       text = job_description.to_s
@@ -58,9 +53,7 @@ class Opportunity < ApplicationRecord
       end
     end
 
-    def compile_pdf_bytes!(cache_key:, typst:, from_cache:)
-      from_cache = from_cache
-
+    def compile_pdf_bytes!(typst:)
       4.times do |i|
         pdf_bytes = ResumeTypstPdf.compile_to_pdf_bytes(typst)
         pages = ResumeTypstPdf.page_count(pdf_bytes)
@@ -68,12 +61,7 @@ class Opportunity < ApplicationRecord
 
         raise UnableToFitOnePage if i == 3
 
-        if i.zero? && from_cache
-          Rails.cache.delete(cache_key)
-          from_cache = false
-        end
-
-        typst = user.synthesize_typst_for_resume!(
+        typst = resume_synthesizer.synthesize(
           company_name:,
           job_description:,
           refinement: REFINEMENT_HINTS[i]

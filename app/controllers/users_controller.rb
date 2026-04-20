@@ -25,8 +25,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.touch_blueprint!(user_update_params[:blueprint_typst].to_s)
-      redirect_to career_path, notice: "Career updated."
+    if @user.update(user_update_params)
+      redirect_to career_path, notice: "Profile updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -49,6 +49,6 @@ class UsersController < ApplicationController
     end
 
     def user_update_params
-      params.require(:user).permit(:blueprint_typst)
+      params.require(:user).permit(:email)
     end
 end

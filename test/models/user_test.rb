@@ -8,11 +8,16 @@ class UserTest < ActiveSupport::TestCase
     assert_equal [ "Typst" ], user.skills.alphabetically.pluck(:name)
   end
 
-  test "typst cache key changes after blueprint timestamp updates" do
+  test "owns? returns true for resources belonging to user" do
     user = users(:alice)
-    key_before = user.typst_cache_key_for("Co", "job")
-    user.update!(blueprint_updated_at: 3.days.from_now)
-    key_after = user.typst_cache_key_for("Co", "job")
-    assert_not_equal key_before, key_after
+    skill = user.skills.create!(name: "Ruby")
+    assert user.owns?(skill)
+  end
+
+  test "owns? returns false for resources belonging to other users" do
+    alice = users(:alice)
+    bob = users(:bob)
+    skill = bob.skills.create!(name: "Ruby")
+    assert_not alice.owns?(skill)
   end
 end
