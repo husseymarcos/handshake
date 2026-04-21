@@ -1,5 +1,5 @@
-class Project < ApplicationRecord
-  belongs_to :user
+class Experience < ApplicationRecord
+  belongs_to :professional
 
   validates :name, presence: true
 

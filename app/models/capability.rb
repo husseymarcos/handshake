@@ -1,5 +1,5 @@
-class Skill < ApplicationRecord
-  belongs_to :user
+class Capability < ApplicationRecord
+  belongs_to :professional
 
   validates :name, presence: true
 

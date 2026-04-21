@@ -1,7 +1,7 @@
 class Opportunity < ApplicationRecord
   class UnableToFitOnePage < StandardError
     def to_s
-      "Unable to fit content to one page. Try removing skills or shortening job description."
+      "Unable to fit content to one page. Try removing capabilities or shortening posting."
     end
   end
 
@@ -11,26 +11,26 @@ class Opportunity < ApplicationRecord
     "Aggressively shorten bullets: one line each, drop lowest-priority items if needed."
   ].freeze
 
-  belongs_to :user
+  belongs_to :professional
   has_one_attached :pdf
 
-  validates :company_name, presence: true
-  validates :job_description, presence: true
+  validates :organization_name, presence: true
+  validates :posting, presence: true
 
-  before_validation :normalize_job_description
+  before_validation :normalize_posting
 
   scope :reverse_chronologically, -> { order(created_at: :desc) }
 
-  def generate_resume!
+  def adapt!
     raise ActiveRecord::RecordInvalid, self unless valid?
 
-    typst = resume_synthesizer.synthesize(company_name:, job_description:, refinement: nil)
+    typst = resume_adapter.adapt(organization_name:, posting:, refinement: nil)
     pdf_bytes, final_typst = compile_pdf_bytes!(typst:)
 
     transaction do
       pdf.attach(
         io: StringIO.new(pdf_bytes),
-        filename: "#{company_name.parameterize.presence || 'resume'}.pdf",
+        filename: "#{organization_name.parameterize.presence || 'resume'}.pdf",
         content_type: "application/pdf"
       )
       update!(generated_typst: final_typst)
@@ -39,17 +39,17 @@ class Opportunity < ApplicationRecord
 
   private
 
-    def resume_synthesizer
-      @resume_synthesizer ||= User::ResumeSynthesizer.new(user)
+    def resume_adapter
+      @resume_adapter ||= ResumeAdapter.new(professional)
     end
 
-    def normalize_job_description
-      text = job_description.to_s
+    def normalize_posting
+      text = posting.to_s
       if Handshake.estimate_tokens(text) > Handshake::JOB_DESCRIPTION_MAX_TOKENS
-        self.job_description = text.truncate(Handshake::JOB_DESCRIPTION_MAX_CHARS, omission: "")
-        self.job_description_truncated = true
+        self.posting = text.truncate(Handshake::JOB_DESCRIPTION_MAX_CHARS, omission: "")
+        self.posting_truncated = true
       else
-        self.job_description_truncated = false
+        self.posting_truncated = false
       end
     end
 
@@ -61,9 +61,9 @@ class Opportunity < ApplicationRecord
 
         raise UnableToFitOnePage if i == 3
 
-        typst = resume_synthesizer.synthesize(
-          company_name:,
-          job_description:,
+        typst = resume_adapter.adapt(
+          organization_name:,
+          posting:,
           refinement: REFINEMENT_HINTS[i]
         )
       end

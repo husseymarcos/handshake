@@ -1,5 +1,5 @@
 class Session < ApplicationRecord
-  belongs_to :user
+  belongs_to :professional
 
   attr_reader :plain_token
 

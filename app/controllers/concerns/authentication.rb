@@ -3,7 +3,7 @@ module Authentication
 
   included do
     before_action :require_authentication
-    helper_method :authenticated?, :current_user
+    helper_method :authenticated?, :current_professional
   end
 
   class_methods do
@@ -18,8 +18,8 @@ module Authentication
       Current.session.present?
     end
 
-    def current_user
-      Current.user
+    def current_professional
+      Current.professional
     end
 
     def require_authentication
@@ -34,8 +34,8 @@ module Authentication
       Session.find_by(token_digest: Session.digest(token))
     end
 
-    def start_new_session_for(user)
-      session = user.sessions.create!
+    def start_new_session_for(professional)
+      session = professional.sessions.create!
       cookies.signed.permanent[:handshake_session_token] = {
         value: session.plain_token,
         httponly: true,

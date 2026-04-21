@@ -6,13 +6,13 @@ Rails.application.routes.draw do
   resource :session, only: %i[ create destroy ]
   get "signin", to: "sessions#new"
 
-  resources :users, only: %i[ create edit update ]
-  get "signup", to: "users#new"
-  get "career", to: "users#show"
-  get "settings", to: "users#edit"
+  resources :professionals, only: %i[ create edit update ]
+  get "signup", to: "professionals#new"
+  get "career", to: "professionals#show"
+  get "settings", to: "professionals#edit"
 
-  resources :skills, only: %i[ create destroy ]
-  resources :projects
+  resources :capabilities, only: %i[ create destroy ]
+  resources :experiences
 
   resources :opportunities, only: %i[ index show new create ] do
     scope module: :opportunities do

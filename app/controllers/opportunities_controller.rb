@@ -2,46 +2,46 @@ class OpportunitiesController < ApplicationController
   before_action :set_opportunity, only: %i[ show ]
 
   def index
-    @opportunities = Current.user.opportunities.reverse_chronologically
+    @opportunities = Current.professional.opportunities.reverse_chronologically
   end
 
   def show
   end
 
   def new
-    @opportunity = Current.user.opportunities.build
+    @opportunity = Current.professional.opportunities.build
   end
 
   def create
-    @opportunity = Current.user.opportunities.build(opportunity_params)
+    @opportunity = Current.professional.opportunities.build(opportunity_params)
     unless @opportunity.save
       return render :new, status: :unprocessable_entity
     end
 
-    @opportunity.generate_resume!
-    if @opportunity.job_description_truncated?
-      flash[:warning] = "Job description was shortened to stay within the #{Handshake::JOB_DESCRIPTION_MAX_TOKENS} token limit."
+    @opportunity.adapt!
+    if @opportunity.posting_truncated?
+      flash[:warning] = "Posting was shortened to stay within the #{Handshake::JOB_DESCRIPTION_MAX_TOKENS} token limit."
     end
-    redirect_to @opportunity, notice: "Resume generated."
+    redirect_to @opportunity, notice: "Resume adapted."
   rescue Opportunity::UnableToFitOnePage => e
     @opportunity&.destroy
     flash.now[:alert] = e.to_s
-    @opportunity = Current.user.opportunities.build(opportunity_params)
+    @opportunity = Current.professional.opportunities.build(opportunity_params)
     render :new, status: :unprocessable_entity
   rescue RubyLLM::Error, ResumeTypstPdf::Error => e
     @opportunity&.destroy
     flash.now[:alert] = e.message
-    @opportunity = Current.user.opportunities.build(opportunity_params)
+    @opportunity = Current.professional.opportunities.build(opportunity_params)
     render :new, status: :unprocessable_entity
   end
 
   private
 
     def set_opportunity
-      @opportunity = Current.user.opportunities.find(params[:id])
+      @opportunity = Current.professional.opportunities.find(params[:id])
     end
 
     def opportunity_params
-      params.require(:opportunity).permit(:company_name, :job_description)
+      params.require(:opportunity).permit(:organization_name, :posting)
     end
 end

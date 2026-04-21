@@ -1,6 +1,6 @@
 class Opportunities::DownloadsController < ApplicationController
   def show
-    opportunity = Current.user.opportunities.find(params[:opportunity_id])
+    opportunity = Current.professional.opportunities.find(params[:opportunity_id])
     raise ActiveRecord::RecordNotFound unless opportunity.pdf.attached?
 
     send_data opportunity.pdf.download,

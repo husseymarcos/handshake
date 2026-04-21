@@ -1,28 +1,28 @@
-<% content_for :title, "#{@opportunity.company_name} — Handshake" %>
+<% content_for :title, "#{@opportunity.organization_name} — Handshake" %>
 
 <div class="page-header row row--between">
   <div>
-    <h1 class="display"><%= @opportunity.company_name %></h1>
-    <p class="muted">Generated <%= l @opportunity.created_at, format: :long %></p>
-    <% if @opportunity.job_description_truncated? %>
-      <p class="flash flash--warning">The job description was shortened to the token limit.</p>
+    <h1 class="display"><%= @opportunity.organization_name %></h1>
+    <p class="muted">Adapted <%= l @opportunity.created_at, format: :long %></p>
+    <% if @opportunity.posting_truncated? %>
+      <p class="flash flash--warning">The posting was shortened to the token limit.</p>
     <% end %>
   </div>
   <% if @opportunity.pdf.attached? %>
-    <%= link_to "Download PDF", opportunity_download_path(@opportunity), class: "pill pill--accent" %>
+    <%= link_to "Download Resume", opportunity_download_path(@opportunity), class: "pill pill--accent" %>
   <% end %>
 </div>
 
 <section class="card stack">
-  <h2 class="section-title">Job description used</h2>
-  <pre class="job-preview"><%= @opportunity.job_description %></pre>
+  <h2 class="section-title">Posting used</h2>
+  <pre class="job-preview"><%= @opportunity.posting %></pre>
 </section>
 
 <% if @opportunity.generated_typst.present? %>
   <section class="card stack">
-    <h2 class="section-title">Generated Typst</h2>
+    <h2 class="section-title">Adapted Typst</h2>
     <pre class="code-preview"><%= @opportunity.generated_typst %></pre>
   </section>
 <% end %>
 
-<p><%= link_to "← History", opportunities_list_path, class: "link" %></p>
+<p><%= link_to "← History", opportunities_path, class: "link" %></p>

@@ -13,15 +13,15 @@
     <% end %>
 
     <div class="field">
-      <label class="field__label field__label--large">Who are you applying to?</label>
-      <%= f.text_field :company_name, required: true, class: "input input--display input--massive", placeholder: "Company Name" %>
+      <label class="field__label field__label--large">Which Organization are you applying to?</label>
+      <%= f.text_field :organization_name, required: true, class: "input input--display input--massive", placeholder: "Organization Name" %>
     </div>
 
     <hr class="form-divider">
 
     <div class="field">
-      <label class="field__label field__label--large">What do they want?</label>
-      <%= f.text_area :job_description, required: true, rows: 12, class: "input input--display", placeholder: "Paste the job posting requirements here..." %>
+      <label class="field__label field__label--large">Paste the Posting</label>
+      <%= f.text_area :posting, required: true, rows: 12, class: "input input--display", placeholder: "Paste the job posting requirements here..." %>
     </div>
 
     <div class="form-actions">

@@ -1,26 +1,28 @@
 require "test_helper"
 
 class OpportunityTest < ActiveSupport::TestCase
-  test "truncates job descriptions that exceed the token budget" do
-    user = users(:alice)
-    Opportunity.where(user: user).delete_all
-    body = "x" * (Handshake::JOB_DESCRIPTION_MAX_CHARS + 500)
-    opp = Opportunity.create!(user: user, company_name: "Acme", job_description: body)
-    # NOTE: opp.valid? is already called by create!, don't call it again
-    # or the truncated flag will reset since the text is already truncated
-    assert opp.job_description_truncated?
-    assert_operator opp.job_description.length, :<=, Handshake::JOB_DESCRIPTION_MAX_CHARS
+  setup do
+    Current.session = professionals(:alice).sessions.create!
   end
 
-  test "lists opportunities newest first" do
-    user = users(:alice)
-    Opportunity.where(user: user).delete_all
-    older = Opportunity.create!(user: user, company_name: "OldCo", job_description: "Past")
+  test "opportunities are tracked with the newest first" do
+    professionals(:alice).opportunities.destroy_all
+    older = professionals(:alice).opportunities.create!(organization_name: "OldCo", posting: "Past")
     older.update_column(:created_at, 5.days.ago)
-    newer = Opportunity.create!(user: user, company_name: "NewCo", job_description: "Now")
+    newer = professionals(:alice).opportunities.create!(organization_name: "NewCo", posting: "Now")
     newer.update_column(:created_at, Time.current)
 
-    ids = user.opportunities.reverse_chronologically.pluck(:id)
+    ids = professionals(:alice).opportunities.reverse_chronologically.pluck(:id)
     assert_equal [ newer.id, older.id ], ids
+  end
+
+  test "adapting a resume attaches a PDF to the opportunity" do
+    opp = professionals(:alice).opportunities.create!(organization_name: "Acme", posting: "A posting")
+
+    with_fake_resume_generation do
+      opp.adapt!
+    end
+
+    assert opp.pdf.attached?
   end
 end

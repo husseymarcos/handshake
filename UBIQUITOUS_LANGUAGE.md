@@ -22,7 +22,7 @@ This document defines the core concepts of Handshake using **optimistic, profess
 **In Code:**
 - Model: `User` (legacy), transitioning to `Professional`
 - Table: `professionals` (planned)
-- Associations: `professional.capabilities`, `professional.works`, `professional.opportunities`
+- Associations: `professional.capabilities`, `professional.experiences`, `professional.opportunities`
 
 ---
 
@@ -30,17 +30,17 @@ This document defines the core concepts of Handshake using **optimistic, profess
 
 ### Portfolio
 
-**Definition:** A Professional's complete collection of career data — their Capabilities and Work.
+**Definition:** A Professional's complete collection of career data — their Capabilities and Experience.
 
 **Rationale:** "Portfolio" implies a curated, valuable collection of your professional assets. It's industry-standard yet optimistic.
 
 **Usage:**
 - "Add items to your **Portfolio**"
-- "Your **Portfolio** showcases your Capabilities and Work"
+- "Your **Portfolio** showcases your Capabilities and Experience"
 - "Build out your **Portfolio** before applying"
 
 **In Code:**
-- Conceptual — spans `capabilities` and `works` tables
+- Conceptual — spans `capabilities` and `experiences` tables
 - View: "Portfolio" section in UI
 
 ---
@@ -65,23 +65,23 @@ This document defines the core concepts of Handshake using **optimistic, profess
 
 ---
 
-### Work
+### Experience
 
 **Definition:** A project, achievement, or deliverable in a Professional's Portfolio.
 
-**Rationale:** Simple, proud, professional. "This is my Work" carries weight and ownership.
+**Rationale:** Clear, professional, and encompassing. "Experience" covers projects, jobs, and achievements you've accumulated throughout your career.
 
 **Usage:**
-- "Showcase your **Work**"
-- "Add **Work** to your Portfolio"
-- "Describe your **Work** and impact"
+- "Showcase your **Experience**"
+- "Add **Experience** to your Portfolio"
+- "Describe your **Experience** and impact"
 
 **In Code:**
-- Model: `Work` (transitioning from `Project`)
-- Table: `works`
-- Association: `professional.works`
+- Model: `Experience` (transitioning from `Project`, `Work`)
+- Table: `experiences`
+- Association: `professional.experiences`
 
-**Formerly:** `Project`
+**Formerly:** `Project`, `Work`
 
 ---
 
@@ -189,7 +189,8 @@ This document defines the core concepts of Handshake using **optimistic, profess
 |----------|----------|-------|
 | User | Professional | More empowering identity |
 | Skill | Capability | Focus on what you CAN do |
-| Project | Work | Proud, simple, professional |
+| Project | Experience | Clear, professional term |
+| Work | Experience | More encompassing term |
 | JobApplication | Opportunity | Hopeful, forward-looking |
 | Company | Organization | Broader, more professional |
 | Job Description | Posting | Industry standard |
@@ -200,7 +201,7 @@ This document defines the core concepts of Handshake using **optimistic, profess
 
 ## Complete User Journey (Using Ubiquitous Language)
 
-> As a **Professional**, you maintain your **Portfolio** — a collection of your **Capabilities** and **Work**. When you discover an **Opportunity** at an **Organization**, you create it in Handshake and paste the **Posting**. The AI then **Adapts** your experience into a tailored **Resume** optimized for that specific role. Review, download, and apply with confidence.
+> As a **Professional**, you maintain your **Portfolio** — a collection of your **Capabilities** and **Experience**. When you discover an **Opportunity** at an **Organization**, you create it in Handshake and paste the **Posting**. The AI then **Adapts** your background into a tailored **Resume** optimized for that specific role. Review, download, and apply with confidence.
 
 ---
 
@@ -213,4 +214,4 @@ This document defines the core concepts of Handshake using **optimistic, profess
 
 ---
 
-*Last updated: April 2026*
+*Last updated: April 21, 2026*

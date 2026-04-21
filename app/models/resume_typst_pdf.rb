@@ -18,7 +18,7 @@ class ResumeTypstPdf
       Dir.mktmpdir("handshake-pdfinfo") do |dir|
         path = File.join(dir, "doc.pdf")
         File.binwrite(path, pdf_bytes)
-        out = IO.popen([pdfinfo_bin, path], err: [ :child, :out ], &:read)
+        out = IO.popen([ pdfinfo_bin, path ], err: [ :child, :out ], &:read)
         raise PdfInfoError, "pdfinfo failed: #{out}" unless $?.success?
 
         if (m = out.match(/Pages:\s*(\d+)/i))

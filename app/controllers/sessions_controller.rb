@@ -5,9 +5,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: session_params[:email].to_s.downcase.strip)
-    if user&.authenticate(session_params[:password])
-      start_new_session_for(user)
+    professional = Professional.find_by(email: session_params[:email].to_s.downcase.strip)
+    if professional&.authenticate(session_params[:password])
+      start_new_session_for(professional)
       redirect_to root_url
     else
       flash.now[:alert] = "Try another email address or password."
@@ -25,5 +25,4 @@ class SessionsController < ApplicationController
     def session_params
       params.require(:session).permit(:email, :password)
     end
-
 end

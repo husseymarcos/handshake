@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_20_121822) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_21_183954) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -39,61 +39,61 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_20_121822) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "opportunities", force: :cascade do |t|
-    t.string "company_name", null: false
+  create_table "capabilities", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.text "generated_typst"
-    t.text "job_description", null: false
-    t.boolean "job_description_truncated", default: false, null: false
+    t.string "name"
+    t.integer "professional_id", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
-    t.index ["user_id"], name: "index_opportunities_on_user_id"
+    t.index ["professional_id"], name: "index_capabilities_on_professional_id"
   end
 
-  create_table "projects", force: :cascade do |t|
+  create_table "experiences", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.text "description"
     t.string "github_url"
     t.string "name"
+    t.integer "professional_id", null: false
     t.string "stack"
     t.string "title"
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
     t.integer "year"
-    t.index ["user_id"], name: "index_projects_on_user_id"
+    t.index ["professional_id"], name: "index_experiences_on_professional_id"
   end
 
-  create_table "sessions", force: :cascade do |t|
+  create_table "opportunities", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.string "token_digest", null: false
+    t.text "generated_typst"
+    t.string "organization_name", null: false
+    t.text "posting", null: false
+    t.boolean "posting_truncated", default: false, null: false
+    t.integer "professional_id", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
-    t.index ["token_digest"], name: "index_sessions_on_token_digest", unique: true
-    t.index ["user_id"], name: "index_sessions_on_user_id"
+    t.index ["professional_id"], name: "index_opportunities_on_professional_id"
   end
 
-  create_table "skills", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.string "name"
-    t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
-    t.index ["user_id"], name: "index_skills_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
+  create_table "professionals", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email", null: false
     t.string "handle"
     t.string "password_digest", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["handle"], name: "index_users_on_handle", unique: true
+    t.index ["email"], name: "index_professionals_on_email", unique: true
+    t.index ["handle"], name: "index_professionals_on_handle", unique: true
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "professional_id", null: false
+    t.string "token_digest", null: false
+    t.datetime "updated_at", null: false
+    t.index ["professional_id"], name: "index_sessions_on_professional_id"
+    t.index ["token_digest"], name: "index_sessions_on_token_digest", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "opportunities", "users"
-  add_foreign_key "projects", "users"
-  add_foreign_key "sessions", "users"
-  add_foreign_key "skills", "users"
+  add_foreign_key "capabilities", "professionals"
+  add_foreign_key "experiences", "professionals"
+  add_foreign_key "opportunities", "professionals"
+  add_foreign_key "sessions", "professionals"
 end

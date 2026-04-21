@@ -1,9 +1,9 @@
-<% content_for :title, "Past Opportunities — Handshake" %>
+<% content_for :title, "Opportunities — Handshake" %>
 
 <div class="page-header row row--between">
   <div>
-    <h1 class="display">Past Opportunities</h1>
-    <p class="lede">Newest opportunities first.</p>
+    <h1 class="display">Opportunities</h1>
+    <p class="lede">Track your career opportunities.</p>
   </div>
   <%= link_to "New Opportunity", new_opportunity_path, class: "pill pill--accent" %>
 </div>
@@ -13,11 +13,11 @@
     <% @opportunities.each do |opp| %>
       <li class="history-row">
         <div>
-          <%= link_to opp.company_name, opportunity_path(opp), class: "history-row__title" %>
+          <%= link_to opp.organization_name, opportunity_path(opp), class: "history-row__title" %>
           <div class="muted"><%= l opp.created_at, format: :long %></div>
         </div>
         <% if opp.pdf.attached? %>
-          <%= link_to "PDF", opportunity_download_path(opp), class: "pill" %>
+          <%= link_to "Resume", opportunity_download_path(opp), class: "pill" %>
         <% end %>
       </li>
     <% end %>

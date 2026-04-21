@@ -6,11 +6,11 @@
 </div>
 
 <div class="card">
-  <%= form_with model: @user, class: "stack" do |f| %>
-    <% if @user.errors.any? %>
+  <%= form_with model: @professional, class: "stack" do |f| %>
+    <% if @professional.errors.any? %>
       <div class="form-errors">
         <ul>
-          <% @user.errors.full_messages.each do |msg| %>
+          <% @professional.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
           <% end %>
         </ul>

@@ -1,8 +1,8 @@
-<%= form_with model: @project, class: "stack" do |f| %>
-  <% if @project.errors.any? %>
+<%= form_with model: @experience, class: "stack" do |f| %>
+  <% if @experience.errors.any? %>
     <div class="form-errors">
       <ul>
-        <% @project.errors.full_messages.each do |msg| %>
+        <% @experience.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>
