@@ -4,6 +4,9 @@
 # and recreated between test runs. Don't rely on the data there!
 
 Rails.application.configure do
+  # Suppress gem warnings for cleaner test output
+  $VERBOSE = nil
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # While tests run files are not watched, reloading is not necessary.
@@ -50,4 +53,7 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions.
   config.action_controller.raise_on_missing_callback_actions = true
+
+  # Load test helpers
+  config.autoload_paths += %w[ test/test_helpers ]
 end

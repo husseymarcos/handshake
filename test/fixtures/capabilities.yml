@@ -5,3 +5,19 @@ ruby:
 rails:
   professional: alice
   name: Rails
+
+typst:
+  professional: alice
+  name: Typst
+
+javascript:
+  professional: bob
+  name: JavaScript
+
+python:
+  professional: bob
+  name: Python
+
+go:
+  professional: carol
+  name: Go

@@ -6,3 +6,31 @@ handshake:
   description: Typst and Rails
   stack: Ruby, Typst
   github_url: https://github.com/example/handshake
+
+legacy_project:
+  professional: alice
+  name: Legacy System Migration
+  year: 2023
+  title: Senior Developer
+  description: Migrated monolith to microservices
+  stack: Java, Spring Boot
+
+undated_experience:
+  professional: alice
+  name: Open Source Contributions
+  title: Contributor
+  description: Various open source projects
+
+bob_experience:
+  professional: bob
+  name: Bob's Project
+  year: 2024
+  title: Developer
+  description: A project for Bob
+
+carol_experience:
+  professional: carol
+  name: Carol's Startup
+  year: 2022
+  title: Founder
+  description: Founded a tech startup

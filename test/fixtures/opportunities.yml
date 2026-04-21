@@ -2,3 +2,19 @@ acme:
   professional: alice
   organization_name: Acme Corp
   posting: Looking for a Rails developer with 5 years experience.
+
+techcorp:
+  professional: alice
+  organization_name: TechCorp Inc
+  posting: Seeking a full-stack developer proficient in Ruby on Rails and React.
+  generated_typst: "#set text[Generated Typst]"
+
+startup_co:
+  professional: bob
+  organization_name: StartupCo
+  posting: Looking for a Python developer.
+
+global_corp:
+  professional: alice
+  organization_name: Global Corp
+  posting: <%= "A" * 32000 %>

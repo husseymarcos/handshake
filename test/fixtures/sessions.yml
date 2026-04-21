@@ -1,0 +1,7 @@
+alice_session:
+  professional: alice
+  token_digest: <%= Session.digest("alice_token_123") %>
+
+bob_session:
+  professional: bob
+  token_digest: <%= Session.digest("bob_token_456") %>

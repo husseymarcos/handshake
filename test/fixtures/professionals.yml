@@ -5,3 +5,11 @@ alice:
 bob:
   email: bob@example.com
   password_digest: <%= BCrypt::Password.create("secret12", cost: 4) %>
+
+carol:
+  email: carol@example.com
+  password_digest: <%= BCrypt::Password.create("secret12", cost: 4) %>
+
+dave:
+  email: dave@example.com
+  password_digest: <%= BCrypt::Password.create("secret12", cost: 4) %>
