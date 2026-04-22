@@ -1,0 +1,18 @@
+@layer components {
+  /* Privacy Note */
+  .privacy-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .privacy-note svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}

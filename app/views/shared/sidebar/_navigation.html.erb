@@ -1,0 +1,25 @@
+<nav class="sidebar-nav">
+  <%= link_to new_opportunity_path,
+      class: "sidebar-nav__item #{current_page?(new_opportunity_path) || current_page?(root_path) ? 'sidebar-nav__item--active' : ''}" do %>
+    <%= render 'shared/icons/pencil' %>
+    Adapt CV
+  <% end %>
+
+  <%= link_to career_path,
+      class: "sidebar-nav__item #{current_page?(career_path) ? 'sidebar-nav__item--active' : ''}" do %>
+    <%= render 'shared/icons/briefcase' %>
+    Career Profile
+  <% end %>
+
+  <%= link_to opportunities_path,
+      class: "sidebar-nav__item #{current_page?(opportunities_path) ? 'sidebar-nav__item--active' : ''}" do %>
+    <%= render 'shared/icons/history' %>
+    Past Applications
+  <% end %>
+
+  <%= link_to settings_path,
+      class: "sidebar-nav__item #{current_page?(settings_path) ? 'sidebar-nav__item--active' : ''}" do %>
+    <%= render 'shared/icons/settings' %>
+    Settings
+  <% end %>
+</nav>

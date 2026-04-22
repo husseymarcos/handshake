@@ -1,0 +1,16 @@
+<div class="form-card">
+  <div class="form-card__header">
+    <%= render 'shared/icons/building' %>
+    <div class="form-card__title-group">
+      <div class="form-card__title">1. Company</div>
+      <div class="form-card__subtitle">Who are you applying to?</div>
+    </div>
+  </div>
+  <%= f.text_field :organization_name, required: true, class: "home-input", placeholder: "e.g. Linear, Notion, Airbnb" %>
+  <div class="form-hint">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 17l9.2-9.2M17 17V7H7"/>
+    </svg>
+    <span>Add the company name to help us tailor the pitch and tone.</span>
+  </div>
+</div>

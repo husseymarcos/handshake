@@ -1,0 +1,15 @@
+<div class="form-card">
+  <div class="form-card__header">
+    <%= render 'shared/icons/star' %>
+    <div class="form-card__title-group">
+      <div class="form-card__title">3. Tone (Optional)</div>
+      <div class="form-card__subtitle">How should we sound?</div>
+    </div>
+  </div>
+  <%= f.select :tone, options_for_select([
+    ['Professional & Confident (Default)', 'professional'],
+    ['Friendly & Approachable', 'friendly'],
+    ['Bold & Assertive', 'bold'],
+    ['Creative & Innovative', 'creative']
+  ]), {}, class: "home-select" %>
+</div>

@@ -1,0 +1,12 @@
+<div class="sidebar-user">
+  <div class="sidebar-user__avatar">
+    <%= Current.professional.name&.first&.upcase || "U" %>
+  </div>
+  <div class="sidebar-user__info">
+    <div class="sidebar-user__name"><%= Current.professional.name || "User" %></div>
+    <div class="sidebar-user__email"><%= Current.professional.email || "user@example.com" %></div>
+  </div>
+  <svg class="sidebar-user__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="6 9 12 15 18 9"/>
+  </svg>
+</div>

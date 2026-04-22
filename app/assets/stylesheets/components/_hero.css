@@ -1,0 +1,50 @@
+@layer components {
+  /* Hero Section */
+  .hero {
+    margin-bottom: 2.5rem;
+  }
+
+  .hero__annotation-image {
+    width: 280px;
+    height: auto;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .hero__heading-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero__heading {
+    font-family: var(--font-sans);
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  .hero__heading-dot {
+    color: var(--accent);
+  }
+
+  .hero__pitch-image {
+    flex-shrink: 0;
+    width: 220px;
+    height: auto;
+    display: block;
+    margin-top: 1rem;
+  }
+
+  .hero__subheading {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 500px;
+  }
+}

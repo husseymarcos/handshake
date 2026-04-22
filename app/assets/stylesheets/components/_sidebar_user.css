@@ -1,0 +1,56 @@
+@layer components {
+  /* Sidebar User Profile */
+  .sidebar-user {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .sidebar-user__avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  .sidebar-user__info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .sidebar-user__name {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .sidebar-user__email {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .sidebar-user__chevron {
+    width: 1rem;
+    height: 1rem;
+    color: var(--muted);
+  }
+}

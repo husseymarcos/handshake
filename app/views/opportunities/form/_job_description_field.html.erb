@@ -1,0 +1,20 @@
+<div class="form-card">
+  <div class="form-card__header">
+    <%= render 'shared/icons/document' %>
+    <div class="form-card__title-group">
+      <div class="form-card__title">2. Job Description</div>
+      <div class="form-card__subtitle">Paste the full job description.</div>
+    </div>
+  </div>
+  <%= f.text_area :posting, required: true, class: "home-input home-textarea", placeholder: "Paste the job description here...", data: { opportunity_form_target: "textarea", action: "input->opportunity-form#updateCounter" } %>
+  <div class="textarea-actions">
+    <button type="button" class="textarea-actions__btn" data-action="click->opportunity-form#pasteFromClipboard">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+        <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+      </svg>
+      Paste from clipboard
+    </button>
+    <span class="textarea-actions__count" data-opportunity-form-target="counter">0 characters</span>
+  </div>
+</div>

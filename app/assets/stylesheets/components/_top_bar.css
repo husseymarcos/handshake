@@ -1,0 +1,79 @@
+@layer components {
+  /* Top Bar */
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .top-bar__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .top-bar__badge svg {
+    width: 1rem;
+    height: 1rem;
+    color: #22c55e;
+  }
+
+  .top-bar__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .top-bar__button:hover {
+    background: var(--card);
+    color: var(--ink);
+  }
+
+  .top-bar__button svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .top-bar__theme-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--muted);
+    transition: all 0.15s ease;
+  }
+
+  .top-bar__theme-btn:hover {
+    background: var(--card);
+    color: var(--ink);
+  }
+
+  .top-bar__theme-btn svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}

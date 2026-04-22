@@ -20,10 +20,21 @@
   </head>
 
   <body>
-    <%= render "application/nav" unless @hide_nav %>
-    <%= render "application/flash" %>
-    <main class="main">
-      <%= yield %>
-    </main>
+    <% if authenticated? %>
+      <div class="app-layout">
+        <%= render "shared/sidebar" %>
+        <main class="app-layout__main">
+          <%= render "application/flash" %>
+          <div class="app-layout__content">
+            <%= yield %>
+          </div>
+        </main>
+      </div>
+    <% else %>
+      <%= render "application/flash" %>
+      <main class="main">
+        <%= yield %>
+      </main>
+    <% end %>
   </body>
 </html>

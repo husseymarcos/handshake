@@ -1,0 +1,24 @@
+@layer components {
+  /* Sidebar Logo */
+  .sidebar-logo {
+    font-family: var(--font-sans);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--ink);
+    text-decoration: none;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .sidebar-logo svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .sidebar-logo__image {
+    width: 200px;
+    height: auto;
+  }
+}
