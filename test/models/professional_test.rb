@@ -13,20 +13,26 @@ class ProfessionalTest < ActiveSupport::TestCase
     assert professionals(:alice).owns?(professionals(:alice).capabilities.first)
   end
 
+  test "name is required" do
+    professional = Professional.new(email: "test@example.com", password: "secret12")
+    assert_not professional.valid?
+    assert_includes professional.errors[:name], "can't be blank"
+  end
+
   test "email is required" do
-    professional = Professional.new(password: "secret12")
+    professional = Professional.new(name: "Test User", password: "secret12")
     assert_not professional.valid?
     assert_includes professional.errors[:email], "can't be blank"
   end
 
   test "email must be unique" do
-    professional = Professional.new(email: professionals(:alice).email, password: "secret12")
+    professional = Professional.new(name: "Test User", email: professionals(:alice).email, password: "secret12")
     assert_not professional.valid?
     assert_includes professional.errors[:email], "has already been taken"
   end
 
   test "email uniqueness is case insensitive" do
-    professional = Professional.new(email: professionals(:alice).email.upcase, password: "secret12")
+    professional = Professional.new(name: "Test User", email: professionals(:alice).email.upcase, password: "secret12")
     assert_not professional.valid?
     assert_includes professional.errors[:email], "has already been taken"
   end
@@ -35,7 +41,7 @@ class ProfessionalTest < ActiveSupport::TestCase
     invalid_emails = [ "not-an-email", "@example.com", "test@", "test@.com" ]
 
     invalid_emails.each do |email|
-      professional = Professional.new(email: email, password: "secret12")
+      professional = Professional.new(name: "Test User", email: email, password: "secret12")
       assert_not professional.valid?, "Expected #{email} to be invalid"
       assert_includes professional.errors[:email], "is invalid"
     end
@@ -45,24 +51,24 @@ class ProfessionalTest < ActiveSupport::TestCase
     valid_emails = [ "test@example.com", "user+tag@example.co.uk", "first.last@example.com", "user123@test.io" ]
 
     valid_emails.each do |email|
-      professional = Professional.new(email: email, password: "secret12")
+      professional = Professional.new(name: "Test User", email: email, password: "secret12")
       professional.valid?
       assert_not_includes professional.errors[:email], "is invalid", "Expected #{email} to be valid"
     end
   end
 
   test "email is normalized to lowercase" do
-    professional = Professional.create!(email: "UPPERCASE@EXAMPLE.COM", password: "secret12")
+    professional = Professional.create!(name: "Upper Case", email: "UPPERCASE@EXAMPLE.COM", password: "secret12")
     assert_equal "uppercase@example.com", professional.reload.email
   end
 
   test "email is stripped of whitespace" do
-    professional = Professional.create!(email: "  test@example.com  ", password: "secret12")
+    professional = Professional.create!(name: "Test User", email: "  test@example.com  ", password: "secret12")
     assert_equal "test@example.com", professional.email
   end
 
   test "password is required" do
-    professional = Professional.new(email: "test@example.com")
+    professional = Professional.new(name: "Test User", email: "test@example.com")
     assert_not professional.valid?
   end
 

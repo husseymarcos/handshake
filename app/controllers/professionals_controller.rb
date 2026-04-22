@@ -45,10 +45,10 @@ class ProfessionalsController < ApplicationController
     end
 
     def professional_create_params
-      params.require(:professional).permit(:email, :password, :password_confirmation)
+      params.require(:professional).permit(:name, :email, :password, :password_confirmation)
     end
 
     def professional_update_params
-      params.require(:professional).permit(:email)
+      params.require(:professional).permit(:name, :email)
     end
 end

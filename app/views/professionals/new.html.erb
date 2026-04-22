@@ -17,6 +17,14 @@
       <% end %>
 
       <div class="login-field">
+        <%= f.text_field :name,
+          required: true,
+          autocomplete: "name",
+          placeholder: "Full name",
+          class: "login-input" %>
+      </div>
+
+      <div class="login-field">
         <%= f.email_field :email,
           required: true,
           autocomplete: "email",

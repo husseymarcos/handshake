@@ -6,6 +6,7 @@ class ProfessionalsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_select "form[action='#{professionals_path}']"
+    assert_select "input[name='professional[name]']"
     assert_select "input[name='professional[email]']"
     assert_select "input[name='professional[password]']"
     assert_select "input[name='professional[password_confirmation]']"
@@ -15,6 +16,7 @@ class ProfessionalsControllerTest < ActionDispatch::IntegrationTest
     assert_difference("Professional.count") do
       post professionals_path, params: {
         professional: {
+          name: "New User",
           email: "newuser@example.com",
           password: "secret12",
           password_confirmation: "secret12"
@@ -31,6 +33,7 @@ class ProfessionalsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference("Professional.count") do
       post professionals_path, params: {
         professional: {
+          name: "New User",
           email: "not-an-email",
           password: "secret12",
           password_confirmation: "secret12"
@@ -45,6 +48,7 @@ class ProfessionalsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference("Professional.count") do
       post professionals_path, params: {
         professional: {
+          name: "New User",
           email: "newuser@example.com",
           password: "secret12",
           password_confirmation: "different"
@@ -59,6 +63,7 @@ class ProfessionalsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference("Professional.count") do
       post professionals_path, params: {
         professional: {
+          name: "New User",
           email: "newuser@example.com",
           password: "",
           password_confirmation: ""
@@ -73,6 +78,7 @@ class ProfessionalsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference("Professional.count") do
       post professionals_path, params: {
         professional: {
+          name: "New User",
           email: professionals(:alice).email,
           password: "secret12",
           password_confirmation: "secret12"
@@ -86,6 +92,7 @@ class ProfessionalsControllerTest < ActionDispatch::IntegrationTest
   test "email is normalized to lowercase on creation" do
     post professionals_path, params: {
       professional: {
+        name: "Upper Case",
         email: "UPPERCASE@EXAMPLE.COM",
         password: "secret12",
         password_confirmation: "secret12"
@@ -124,7 +131,7 @@ class ProfessionalsControllerTest < ActionDispatch::IntegrationTest
     sign_in_as(professionals(:alice))
 
     patch professional_path(professionals(:alice)), params: {
-      professional: { email: "newemail@example.com" }
+      professional: { name: professionals(:alice).name, email: "newemail@example.com" }
     }
 
     assert_redirected_to career_path

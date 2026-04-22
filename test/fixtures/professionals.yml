@@ -1,15 +1,19 @@
 alice:
+  name: Alice Anderson
   email: alice@example.com
   password_digest: <%= BCrypt::Password.create("secret12", cost: 4) %>
 
 bob:
+  name: Bob Brown
   email: bob@example.com
   password_digest: <%= BCrypt::Password.create("secret12", cost: 4) %>
 
 carol:
+  name: Carol Clark
   email: carol@example.com
   password_digest: <%= BCrypt::Password.create("secret12", cost: 4) %>
 
 dave:
+  name: Dave Davis
   email: dave@example.com
   password_digest: <%= BCrypt::Password.create("secret12", cost: 4) %>

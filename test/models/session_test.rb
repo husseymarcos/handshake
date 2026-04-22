@@ -36,7 +36,7 @@ class SessionTest < ActiveSupport::TestCase
   end
 
   test "sessions are destroyed when professional is destroyed" do
-    professional = Professional.create!(email: "temp@example.com", password: "secret12")
+    professional = Professional.create!(name: "Temp User", email: "temp@example.com", password: "secret12")
     session = professional.sessions.create!
 
     assert_difference("Session.count", -1) do

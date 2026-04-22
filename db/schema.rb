@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_21_183954) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_22_180406) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -51,6 +51,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_21_183954) do
     t.datetime "created_at", null: false
     t.text "description"
     t.string "github_url"
+    t.integer "kind", default: 0, null: false
     t.string "name"
     t.integer "professional_id", null: false
     t.string "stack"
@@ -75,6 +76,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_21_183954) do
     t.datetime "created_at", null: false
     t.string "email", null: false
     t.string "handle"
+    t.string "name"
     t.string "password_digest", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_professionals_on_email", unique: true
