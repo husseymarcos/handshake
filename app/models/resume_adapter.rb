@@ -53,8 +53,8 @@ class ResumeAdapter
     experience_block = professional.experiences.chronologically.map { |e| experience_bullet(e) }.join("\n")
 
     <<~TXT
-      Use this blueprint as the structural starting point (you may reorganize for fit, but keep a professional CV):
-      #{Blueprint.for(professional).content}
+      Use this CV template as the structural starting point (you may reorganize for fit, but keep a professional CV):
+      #{CurriculumVitae.for(professional)}
 
       Candidate capabilities: #{capability_line.presence || "(none yet — infer sparingly from experience)"}
 

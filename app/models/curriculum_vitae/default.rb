@@ -1,4 +1,4 @@
-class Blueprint
+class CurriculumVitae
   class Default
     PATH = Rails.root.join("config/default.typst")
 
