@@ -168,7 +168,7 @@ class OpportunityTest < ActiveSupport::TestCase
     opportunity.valid?
 
     # The normalize_posting method sets posting to "" when nil, but validation may not run the setter
-    assert_includes [nil, ""], opportunity.posting
+    assert_includes [ nil, "" ], opportunity.posting
   end
 
   test "posting normalization handles empty posting" do
