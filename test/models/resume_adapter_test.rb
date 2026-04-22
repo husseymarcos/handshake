@@ -70,11 +70,11 @@ class ResumeAdapterTest < ActiveSupport::TestCase
     assert_match(/single.*page/i, instruction)
   end
 
-  test "user prompt includes blueprint body" do
+  test "user prompt includes blueprint from Blueprint.for" do
     adapter = ResumeAdapter.new(professionals(:alice))
     prompt = adapter.send(:user_prompt, "TestOrg", "Job posting", nil)
 
-    assert_includes prompt, Blueprint.body
+    assert_includes prompt, Blueprint.for(professionals(:alice)).content
   end
 
   test "user prompt includes capabilities" do

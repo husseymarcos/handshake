@@ -54,7 +54,7 @@ class ResumeAdapter
 
     <<~TXT
       Use this blueprint as the structural starting point (you may reorganize for fit, but keep a professional CV):
-      #{Blueprint.body}
+      #{Blueprint.for(professional).content}
 
       Candidate capabilities: #{capability_line.presence || "(none yet — infer sparingly from experience)"}
 

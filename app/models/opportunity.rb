@@ -40,7 +40,7 @@ class Opportunity < ApplicationRecord
   private
 
     def resume_adapter
-      @resume_adapter ||= ResumeAdapter.new(professional)
+      ResumeAdapter.new(professional)
     end
 
     def normalize_posting
