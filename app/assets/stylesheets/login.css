@@ -59,16 +59,23 @@
   }
 
   .auth-pitch__copy p {
+    position: relative;
     width: fit-content;
     margin: 20px 0 0;
     font-family: var(--font-body);
     font-size: 18px;
     line-height: 1.4;
     color: var(--ink);
-    background:
-      linear-gradient(var(--accent), var(--accent)) 86% 35% / 34% 2px no-repeat,
-      linear-gradient(var(--accent), var(--accent)) 20% 96% / 17% 2px no-repeat;
     padding-right: 8px;
+  }
+
+  .auth-pitch__copy .underline {
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    width: 60%;
+    height: auto;
+    pointer-events: none;
   }
 
   .auth-spark {
