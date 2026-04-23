@@ -1,4 +1,8 @@
 <% flash.each do |type, message| %>
   <% next if message.blank? %>
-  <div class="flash flash--<%= type %>" role="status"><%= message %></div>
+  <div class="flash" role="status">
+    <div class="<%= class_names("flash__inner", "flash__inner--#{type}") %>">
+      <%= message %>
+    </div>
+  </div>
 <% end %>

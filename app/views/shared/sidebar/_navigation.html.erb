@@ -1,25 +1,25 @@
 <nav class="sidebar-nav">
   <%= link_to new_opportunity_path,
-      class: "sidebar-nav__item #{current_page?(new_opportunity_path) || current_page?(root_path) ? 'sidebar-nav__item--active' : ''}" do %>
-    <%= render 'shared/icons/pencil' %>
-    Adapt CV
+      class: class_names("sidebar-nav__link", "is-current": current_page?(new_opportunity_path) || current_page?(root_path)) do %>
+    <%= render "shared/icons/briefcase" %>
+    <span>New Application</span>
   <% end %>
 
   <%= link_to career_path,
-      class: "sidebar-nav__item #{current_page?(career_path) ? 'sidebar-nav__item--active' : ''}" do %>
-    <%= render 'shared/icons/briefcase' %>
-    Career Profile
+      class: class_names("sidebar-nav__link", "is-current": current_page?(career_path)) do %>
+    <%= render "shared/icons/pencil" %>
+    <span>Career</span>
   <% end %>
 
   <%= link_to opportunities_path,
-      class: "sidebar-nav__item #{current_page?(opportunities_path) ? 'sidebar-nav__item--active' : ''}" do %>
-    <%= render 'shared/icons/history' %>
-    Past Applications
+      class: class_names("sidebar-nav__link", "is-current": current_page?(opportunities_path)) do %>
+    <%= render "shared/icons/history" %>
+    <span>History</span>
   <% end %>
 
   <%= link_to settings_path,
-      class: "sidebar-nav__item #{current_page?(settings_path) ? 'sidebar-nav__item--active' : ''}" do %>
-    <%= render 'shared/icons/settings' %>
-    Settings
+      class: class_names("sidebar-nav__link", "is-current": current_page?(settings_path)) do %>
+    <%= render "shared/icons/settings" %>
+    <span>Settings</span>
   <% end %>
 </nav>

@@ -2,14 +2,14 @@
 
 <div class="page-header row row--between">
   <div>
-    <h1 class="display">Opportunities</h1>
+    <h1 class="display title--compact">Opportunities</h1>
     <p class="lede">Track your career opportunities.</p>
   </div>
   <%= link_to "New Opportunity", new_opportunity_path, class: "pill pill--accent" %>
 </div>
 
 <% if @opportunities.any? %>
-  <ul class="card list-plain stack">
+  <ul class="card history-list list-plain">
     <% @opportunities.each do |opp| %>
       <li class="history-row">
         <div>

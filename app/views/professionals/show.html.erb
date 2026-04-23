@@ -1,22 +1,22 @@
 <% content_for :title, "Portfolio — Handshake" %>
 
 <div class="page-header">
-  <h1 class="display">Portfolio</h1>
+  <h1 class="display title--compact">Portfolio</h1>
   <p class="lede">Manage your capabilities and experience for tailored resume adaptation.</p>
 </div>
 
-<section class="card stack">
-  <h2 class="section-title">Capabilities</h2>
+<section class="card card--section">
+  <h2 class="title title--section">Capabilities</h2>
   <%= form_with model: Capability.new, url: capabilities_path, class: "row" do |f| %>
-    <%= f.text_field :name, placeholder: "e.g. Ruby on Rails", class: "input input--massive flex-grow" %>
+    <%= f.text_field :name, placeholder: "e.g. Ruby on Rails", class: "input input--massive-plain input--grow" %>
     <%= f.submit "Add", class: "pill pill--accent" %>
   <% end %>
   <% if @professional.capabilities.any? %>
-    <ul class="pills-list">
+    <ul class="list-plain list-flex">
       <% @professional.capabilities.alphabetically.each do |capability| %>
-        <li>
+        <li class="list-item">
           <span class="pill pill--tag"><%= capability.name %></span>
-          <%= button_to "Remove", capability_path(capability), method: :delete, class: "link-button", form: { data: { turbo_confirm: "Remove this capability?" } } %>
+          <%= button_to "Remove", capability_path(capability), method: :delete, class: "btn btn--link", form: { data: { turbo_confirm: "Remove this capability?" } } %>
         </li>
       <% end %>
     </ul>
@@ -25,23 +25,23 @@
   <% end %>
 </section>
 
-<section class="card stack">
+<section class="card card--section">
   <div class="row row--between">
-    <h2 class="section-title">Experience</h2>
+    <h2 class="title title--section">Experience</h2>
     <%= link_to "Add experience", new_experience_path, class: "pill pill--accent" %>
   </div>
   <% if @professional.experiences.any? %>
-    <ul class="experience-list">
+    <ul class="list-plain">
       <% @professional.experiences.chronologically.each do |experience| %>
-        <li class="experience-list__item">
+        <li class="history-row">
           <div>
             <strong><%= experience.name %></strong>
             <% if experience.year.present? %><span class="muted"> · <%= experience.year %></span><% end %>
             <% if experience.title.present? %><div class="muted"><%= experience.title %></div><% end %>
           </div>
-          <div class="row">
+          <div class="action-row">
             <%= link_to "Edit", edit_experience_path(experience), class: "link" %>
-            <%= button_to "Delete", experience_path(experience), method: :delete, class: "link-button", form: { data: { turbo_confirm: "Delete this experience?" } } %>
+            <%= button_to "Delete", experience_path(experience), method: :delete, class: "btn btn--link", form: { data: { turbo_confirm: "Delete this experience?" } } %>
           </div>
         </li>
       <% end %>

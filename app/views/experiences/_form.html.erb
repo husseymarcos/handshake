@@ -1,36 +1,36 @@
-<%= form_with model: @experience, class: "stack" do |f| %>
+<%= form_with model: @experience, class: "form-stack" do |f| %>
   <% if @experience.errors.any? %>
-    <div class="form-errors">
-      <ul>
+    <div class="error-panel" role="alert">
+      <ul class="error-list">
         <% @experience.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+          <li class="error-list__item"><%= msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
   <label class="field">
     <span class="field__label">Name</span>
-    <%= f.text_field :name, class: "input input--massive", required: true %>
+    <%= f.text_field :name, required: true, class: "input input--massive-plain" %>
   </label>
   <label class="field">
     <span class="field__label">Year</span>
-    <%= f.number_field :year, class: "input input--massive" %>
+    <%= f.number_field :year, class: "input input--massive-plain" %>
   </label>
   <label class="field">
     <span class="field__label">Title / role</span>
-    <%= f.text_field :title, class: "input input--massive" %>
+    <%= f.text_field :title, class: "input input--massive-plain" %>
   </label>
   <label class="field">
     <span class="field__label">Description</span>
-    <%= f.text_area :description, rows: 5, class: "input input--massive" %>
+    <%= f.text_area :description, rows: 5, class: "input input--massive-plain" %>
   </label>
   <label class="field">
     <span class="field__label">Stack</span>
-    <%= f.text_field :stack, class: "input input--massive" %>
+    <%= f.text_field :stack, class: "input input--massive-plain" %>
   </label>
   <label class="field">
     <span class="field__label">GitHub URL</span>
-    <%= f.url_field :github_url, class: "input input--massive" %>
+    <%= f.url_field :github_url, class: "input input--massive-plain" %>
   </label>
-  <%= f.submit class: "pill pill--accent" %>
+  <%= f.submit class: "pill pill--accent btn--fit" %>
 <% end %>

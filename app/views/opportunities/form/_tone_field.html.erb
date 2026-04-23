@@ -1,15 +1,11 @@
-<div class="form-card">
-  <div class="form-card__header">
-    <%= render 'shared/icons/star' %>
-    <div class="form-card__title-group">
-      <div class="form-card__title">3. Tone (Optional)</div>
-      <div class="form-card__subtitle">How should we sound?</div>
+<div class="form-panel">
+  <div class="form-panel__header">
+    <%= render "shared/icons/star" %>
+    <div class="form-panel__body">
+      <div class="form-panel__title">3. Tone (Optional)</div>
+      <div class="form-panel__description">How should we sound?</div>
     </div>
   </div>
-  <%= f.select :tone, options_for_select([
-    ['Professional & Confident (Default)', 'professional'],
-    ['Friendly & Approachable', 'friendly'],
-    ['Bold & Assertive', 'bold'],
-    ['Creative & Innovative', 'creative']
-  ]), {}, class: "home-select" %>
+
+  <%= f.select :tone, Opportunity::TONES, { include_blank: "Use my default tone" }, class: "home-select" %>
 </div>

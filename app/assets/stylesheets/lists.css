@@ -1,50 +1,71 @@
 @layer components {
-  .pills-list li {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .project-list__item {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .project-list__item:last-child {
-    border-bottom: none;
-  }
-
-  .history-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.85rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .history-row:last-child {
-    border-bottom: none;
-  }
-
-  .history-row__title {
-    font-family: var(--font-sans);
-    font-weight: 700;
-    color: var(--ink);
-    text-decoration: none;
-  }
-
-  .history-row__title:hover {
-    color: var(--accent);
-  }
-
+  /* List items */
   .list-plain {
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+
+  .list-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-block-end: var(--space-xs);
+  }
+
+  .list-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .action-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  /* Project list */
+  .project-list__item {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space);
+    padding: var(--space-sm) 0;
+    border-block-end: 1px solid var(--color-border);
+  }
+
+  .project-list__item:last-child {
+    border-block-end: none;
+  }
+
+  /* History rows */
+  .history-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space);
+    padding: var(--space-sm) 0;
+    border-block-end: 1px solid var(--color-border);
+  }
+
+  .history-row:last-child {
+    border-block-end: none;
+  }
+
+  .history-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space);
+  }
+
+  .history-row__title {
+    font-weight: 700;
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+
+  .history-row__title:hover {
+    color: var(--color-accent);
   }
 }

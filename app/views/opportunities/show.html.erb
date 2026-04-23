@@ -2,10 +2,10 @@
 
 <div class="page-header row row--between">
   <div>
-    <h1 class="display"><%= @opportunity.organization_name %></h1>
+    <h1 class="display title--compact"><%= @opportunity.organization_name %></h1>
     <p class="muted">Adapted <%= l @opportunity.created_at, format: :long %></p>
     <% if @opportunity.posting_truncated? %>
-      <p class="flash flash--warning">The posting was shortened to the token limit.</p>
+      <p class="notice-card" role="alert">The posting was shortened to the token limit.</p>
     <% end %>
   </div>
   <% if @opportunity.pdf.attached? %>
@@ -13,15 +13,15 @@
   <% end %>
 </div>
 
-<section class="card stack">
-  <h2 class="section-title">Posting used</h2>
-  <pre class="job-preview"><%= @opportunity.posting %></pre>
+<section class="card card--section">
+  <h2 class="title title--section">Posting used</h2>
+  <pre class="preview"><%= @opportunity.posting %></pre>
 </section>
 
 <% if @opportunity.generated_typst.present? %>
-  <section class="card stack">
-    <h2 class="section-title">Adapted Typst</h2>
-    <pre class="code-preview"><%= @opportunity.generated_typst %></pre>
+  <section class="card card--section">
+    <h2 class="title title--section">Adapted Typst</h2>
+    <pre class="preview"><%= @opportunity.generated_typst %></pre>
   </section>
 <% end %>
 

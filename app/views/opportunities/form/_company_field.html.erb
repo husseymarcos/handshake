@@ -1,16 +1,20 @@
-<div class="form-card">
-  <div class="form-card__header">
-    <%= render 'shared/icons/building' %>
-    <div class="form-card__title-group">
-      <div class="form-card__title">1. Company</div>
-      <div class="form-card__subtitle">Who are you applying to?</div>
+<div class="form-panel">
+  <div class="form-panel__header">
+    <%= render "shared/icons/building" %>
+    <div class="form-panel__body">
+      <div class="form-panel__title">1. Company</div>
+      <div class="form-panel__description">Who are you applying to?</div>
     </div>
   </div>
-  <%= f.text_field :organization_name, required: true, class: "home-input", placeholder: "e.g. Linear, Notion, Airbnb" %>
-  <div class="form-hint">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M7 17l9.2-9.2M17 17V7H7"/>
+
+  <%= f.text_field :organization_name, placeholder: "Acme Inc.", class: "input" %>
+
+  <div class="form-note">
+    <svg class="icon icon--hint" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 16v-4"/>
+      <path d="M12 8h.01"/>
     </svg>
-    <span>Add the company name to help us tailor the pitch and tone.</span>
+    <span>Use the company name exactly as it appears in the job posting for best results.</span>
   </div>
 </div>

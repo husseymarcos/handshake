@@ -1,7 +1,7 @@
-<%= form_with model: @opportunity, class: "stack", data: { controller: "opportunity-form" } do |f| %>
+<%= form_with model: @opportunity, class: "form-stack", data: { controller: "opportunity-form" } do |f| %>
   <%= render 'opportunities/form/errors', opportunity: @opportunity %>
 
-  <div class="form-grid">
+  <div class="opportunity-form__grid">
     <%= render 'opportunities/form/company_field', f: f %>
     <%= render 'opportunities/form/job_description_field', f: f %>
     <%= render 'opportunities/form/tone_field', f: f %>

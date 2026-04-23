@@ -1,130 +1,243 @@
-@layer reset, base, components, utilities;
-
 @layer components {
-  .button {
-    min-height: var(--control-height);
-    display: inline-flex;
+  .btn {
+    --btn-border-radius: var(--radius);
+    --btn-hover-brightness: 1.03;
+
     align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    border: 0;
-    border-radius: var(--control-radius);
-    background: var(--accent);
-    background-color: var(--accent);
-    color: var(--accent-ink);
-    -webkit-text-fill-color: currentColor;
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    font-weight: 700;
-    line-height: 1;
-    text-decoration: none;
+    background-color: var(--btn-background, var(--color-accent));
+    border-radius: var(--btn-border-radius);
+    border: var(--btn-border-size, 0) solid var(--btn-border-color, transparent);
+    box-shadow: var(--btn-shadow, var(--shadow-control));
+    color: var(--btn-color, var(--color-accent-ink));
     cursor: pointer;
-    box-shadow: var(--control-shadow);
-    transition: background 0.15s ease, color 0.15s ease, filter 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+    display: inline-flex;
+    font-family: inherit;
+    font-size: var(--btn-font-size, 0.95rem);
+    font-weight: var(--btn-font-weight, 600);
+    gap: var(--btn-gap, 0.5em);
+    justify-content: center;
+    line-height: 1;
+    min-block-size: var(--btn-height, var(--control-height));
+    padding: var(--btn-padding, 0.5em 1.1em);
+    pointer-events: auto;
+    position: relative;
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease, filter 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
     -webkit-appearance: none;
     appearance: none;
+
+    @media (any-hover: hover) {
+      &:hover {
+        filter: brightness(var(--btn-hover-brightness));
+      }
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+
+    &:where(:focus-visible) {
+      outline: none;
+      box-shadow: var(--focus-ring);
+    }
+
+    &[disabled],
+    &:has([disabled]),
+    [disabled] &[type=submit],
+    &[type=submit]:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    svg {
+      flex-shrink: 0;
+      block-size: var(--btn-icon-size, 1em);
+      inline-size: var(--btn-icon-size, 1em);
+    }
   }
 
-  .button:hover {
-    background: var(--accent-hover);
-    background-color: var(--accent-hover);
-    color: var(--accent-ink);
-    -webkit-text-fill-color: currentColor;
-    filter: brightness(1.03);
+  /* Variants
+  /* ------------------------------------------------------------------------ */
+
+  .btn--primary {
+    --btn-background: var(--color-accent);
+    --btn-color: var(--color-accent-ink);
+    --btn-border-color: transparent;
   }
 
-  .button:active {
-    transform: translateY(1px);
+  .btn--secondary {
+    --btn-height: 2.25rem;
+    --btn-background: var(--color-canvas);
+    --btn-color: var(--color-ink-muted);
+    --btn-border-size: 1px;
+    --btn-border-color: var(--color-border);
+    --btn-shadow: none;
+    --btn-font-size: 0.85rem;
+
+    @media (any-hover: hover) {
+      &:hover {
+        --btn-background: var(--color-paper);
+        --btn-border-color: rgb(10 10 10 / 18%);
+        --btn-color: var(--color-ink);
+      }
+    }
   }
 
-  .button:focus-visible,
-  .link-button:focus-visible {
-    outline: none;
-    box-shadow: var(--focus-ring);
+  .btn--ghost {
+    --btn-background: transparent;
+    --btn-color: var(--color-ink-muted);
+    --btn-shadow: none;
+
+    @media (any-hover: hover) {
+      &:hover {
+        --btn-background: rgb(0 0 0 / 4%);
+        --btn-color: var(--color-ink);
+      }
+    }
   }
 
-  .button--primary {
-    background: var(--accent);
-    background-color: var(--accent);
-    color: var(--accent-ink);
-    -webkit-text-fill-color: currentColor;
-  }
+  .btn--link {
+    --btn-background: transparent;
+    --btn-color: var(--color-link);
+    --btn-shadow: none;
+    --btn-padding: 0;
+    --btn-font-size: 0.88rem;
+    --btn-height: auto;
 
-  .button--primary:hover {
-    background: var(--accent-hover);
-    background-color: var(--accent-hover);
-    color: var(--accent-ink);
-    -webkit-text-fill-color: currentColor;
-  }
-
-  .button--secondary {
-    min-height: 2.25rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    border: 1px solid var(--border);
-    border-radius: var(--control-radius);
-    background: var(--bg);
-    color: var(--muted);
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    font-weight: 600;
-    line-height: 1;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
-  }
-
-  .button--secondary:hover {
-    background: var(--card);
-    border-color: rgb(10 10 10 / 18%);
-    color: var(--ink);
-  }
-
-  .button--ghost {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 0;
-    border-radius: var(--control-radius);
-    background: transparent;
-    color: var(--muted);
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
-  }
-
-  .button--ghost:hover {
-    background: rgb(0 0 0 / 4%);
-    color: var(--ink);
-  }
-
-  .link-button {
-    border: none;
-    background: none;
-    padding: 0;
-    color: var(--accent);
-    font-family: var(--font-body);
-    font-size: 0.88rem;
-    cursor: pointer;
     text-decoration: underline;
     text-underline-offset: 0.15em;
+
+    @media (any-hover: hover) {
+      &:hover {
+        text-decoration-thickness: 2px;
+        filter: none;
+      }
+    }
   }
 
-  .link-button:hover {
-    text-decoration-thickness: 2px;
+  .btn--circle {
+    --btn-height: 2.5rem;
+    --btn-padding: 0;
+    --btn-icon-size: 1.2em;
+
+    aspect-ratio: 1;
+    border-radius: var(--radius-full);
+    inline-size: var(--btn-height);
   }
 
-  .button svg {
-    width: 1rem;
-    height: 1rem;
-    flex: 0 0 auto;
+  .btn--pill {
+    --btn-border-radius: var(--radius-full);
   }
 
-  form.inline {
-    display: inline;
+  .btn--small {
+    --btn-height: 2.25rem;
+    --btn-font-size: 0.85rem;
+  }
+
+  .btn--large {
+    --btn-height: 3rem;
+    --btn-font-size: 1rem;
+    --btn-padding: 0.75rem 1.75rem;
+  }
+
+  .btn--fit {
+    inline-size: fit-content;
+  }
+
+  .btn--block {
+    inline-size: 100%;
+  }
+
+  .btn--menu {
+    --btn-background: transparent;
+    --btn-color: var(--color-ink);
+    --btn-shadow: none;
+    --btn-height: auto;
+    --btn-padding: 0.5rem var(--space);
+    --btn-font-size: var(--text-small);
+
+    inline-size: 100%;
+    justify-content: flex-start;
+    border: 0;
+  }
+
+  .btn--negative {
+    --btn-background: var(--color-negative);
+    --btn-color: var(--color-ink-inverted);
+    --focus-ring-color: var(--color-negative);
+  }
+
+  .btn--positive {
+    --btn-background: var(--color-positive);
+    --btn-color: var(--color-ink-inverted);
+    --focus-ring-color: var(--color-positive);
+  }
+
+  /* CTA Button */
+  .cta-button {
+    inline-size: 100%;
+    gap: var(--space-sm);
+    padding: 1.25rem 2rem;
+    border-radius: var(--radius-lg);
+    font-size: 1.1rem;
+    font-weight: 900;
+    margin-block-start: var(--space-md);
+  }
+
+  .cta-button svg {
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
+  }
+
+  .cta-button__sparkles {
+    display: flex;
+    gap: var(--space-xs);
+  }
+
+  /* Button groups
+  /* ------------------------------------------------------------------------ */
+
+  .btn__group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+
+    &--tight {
+      gap: 0;
+
+      > .btn:not(:first-child) {
+        border-start-start-radius: 0;
+        border-end-start-radius: 0;
+      }
+
+      > .btn:not(:last-child) {
+        border-start-end-radius: 0;
+        border-end-end-radius: 0;
+        border-inline-end: 0;
+      }
+    }
+  }
+
+  /* Mobile tap target sizing
+  /* ------------------------------------------------------------------------ */
+
+  :is([data-platform~=mobile], [data-platform~=native]) {
+    .btn--ensure-tap-target-size {
+      --tap-target-z-index: 1;
+      --tap-target-min-size: 44px;
+
+      z-index: var(--tap-target-z-index);
+
+      &::before {
+        content: "";
+        display: block;
+        block-size: var(--tap-target-min-size);
+        inline-size: var(--tap-target-min-size);
+        inset: calc(50% - var(--tap-target-min-size) / 2) auto auto calc(50% - var(--tap-target-min-size) / 2);
+        opacity: 0;
+        position: absolute;
+      }
+    }
   }
 }

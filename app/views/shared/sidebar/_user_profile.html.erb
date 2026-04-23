@@ -1,23 +1,22 @@
-<div class="sidebar-user">
-  <%= link_to settings_path, class: "sidebar-user__profile", aria: { label: "Open settings" } do %>
-    <div class="sidebar-user__avatar">
-      <%= Current.professional.name&.first&.upcase || "U" %>
+<div class="account-card">
+  <%= link_to settings_path, class: "account-card__identity", aria: { label: "Open settings" } do %>
+    <div class="account-card__avatar">
+      <%= (Current.professional.name || "U").first.upcase %>
     </div>
-    <div class="sidebar-user__info">
-      <div class="sidebar-user__name"><%= Current.professional.name || "User" %></div>
-      <div class="sidebar-user__email"><%= Current.professional.email || "user@example.com" %></div>
+    <div class="account-card__details">
+      <div class="account-card__name truncate"><%= Current.professional.name || "User" %></div>
+      <div class="account-card__email truncate"><%= Current.professional.email || "user@example.com" %></div>
     </div>
   <% end %>
 
-  <details class="sidebar-user__menu">
-    <summary class="sidebar-user__menu-toggle" aria-label="Account menu">
-      <svg class="sidebar-user__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <polyline points="6 9 12 15 18 9"/>
+  <details class="account-menu">
+    <summary class="account-menu__summary" aria-label="Account menu">
+      <svg class="account-menu__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="6 9 12 15 18 9"></polyline>
       </svg>
     </summary>
-
-    <div class="sidebar-user__menu-panel">
-      <%= button_to "Log out", session_path, method: :delete, class: "button button--ghost sidebar-user__logout" %>
+    <div class="account-menu__panel">
+      <%= button_to "Log out", session_path, method: :delete, class: "btn btn--menu" %>
     </div>
   </details>
 </div>
