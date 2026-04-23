@@ -1,17 +1,27 @@
+@layer reset, base, components, utilities;
+
 @layer base {
   :root {
     --bg: #fdfcf8;
     --ink: #0a0a0a;
     --muted: #525252;
-    --accent: #2563eb;
+    --accent: #2458ff;
+    --accent-hover: #1f4be0;
     --accent-ink: #ffffff;
     --border: #e7e5e0;
     --card: #ffffff;
     --shadow: 0 20px 50px rgb(15 23 42 / 8%);
     --radius: 1.5rem;
+    --control-radius: 0.625rem;
+    --control-height: 2.75rem;
+    --control-shadow: inset 0 -2px 0 rgb(0 0 0 / 10%), 0 0.25rem 0.75rem rgb(36 88 255 / 20%);
+    --focus-ring: 0 0 0 3px rgb(36 88 255 / 14%);
     --font-sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --font-serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
     --font-mono: ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+    --font-body: var(--font-sans);
+    --font-title: var(--font-sans);
+    --font-display: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   }
 
   html {
@@ -22,19 +32,15 @@
 
   body {
     min-height: 100vh;
-    font-family: var(--font-serif);
+    font-family: var(--font-body);
     color: var(--ink);
     background: var(--bg);
     line-height: 1.55;
   }
 
-  /* Ensure inputs have proper color contrast */
-  input, textarea, select {
-    color: var(--ink);
-  }
-
-  /* Ensure buttons have proper color contrast */
-  button {
+  input,
+  textarea,
+  select {
     color: var(--ink);
   }
 }

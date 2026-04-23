@@ -1,26 +1,44 @@
 @layer components {
-  /* Form Inputs */
+  .control-input,
+  .auth-input,
   .home-input {
     width: 100%;
     padding: 1rem 1.25rem;
     border: 1px solid var(--border);
-    border-radius: 0.75rem;
-    background: var(--bg);
+    border-radius: var(--control-radius);
+    background: rgb(255 255 255 / 80%);
     font-family: var(--font-sans);
     font-size: 1rem;
     color: var(--ink);
-    transition: all 0.15s ease;
+    transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
   }
 
+  .control-input:focus,
+  .auth-input:focus,
   .home-input:focus {
     outline: none;
     border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgb(37 99 235 / 12%);
+    box-shadow: var(--focus-ring);
     background: var(--card);
   }
 
+  .control-input::placeholder,
+  .auth-input::placeholder,
   .home-input::placeholder {
-    color: #9ca3af;
+    color: rgb(82 82 82 / 56%);
+    opacity: 1;
+  }
+
+  .home-input {
+    background: var(--bg);
+  }
+
+  .auth-input {
+    min-height: 44px;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px 12px 10px 40px;
+    box-shadow: inset 0 1px 2px rgb(15 23 42 / 3%);
   }
 
   .home-textarea {

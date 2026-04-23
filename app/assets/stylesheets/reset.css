@@ -1,3 +1,5 @@
+@layer reset, base, components, utilities;
+
 @layer reset {
   *,
   *::before,
@@ -14,12 +16,8 @@
     list-style: none;
   }
 
-  /* 
-   * Form elements - explicit defaults to avoid cascade surprises
-   */
   button, input, textarea, select {
     font: inherit;
-    color: #0a0a0a;
-    background-color: transparent;
+    color: inherit;
   }
 }

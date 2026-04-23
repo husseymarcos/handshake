@@ -1,3 +1,3 @@
 RubyLLM.configure do |config|
-  config.gemini_api_key = ENV["GEMINI_API_KEY"].to_s
+  config.gemini_api_key = Rails.application.credentials.dig(:gemini, :api_key) || "test_gemini_key"
 end

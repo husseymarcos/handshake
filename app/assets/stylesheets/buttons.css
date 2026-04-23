@@ -1,10 +1,113 @@
+@layer reset, base, components, utilities;
+
 @layer components {
+  .button {
+    min-height: var(--control-height);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 0;
+    border-radius: var(--control-radius);
+    background: var(--accent);
+    background-color: var(--accent);
+    color: var(--accent-ink);
+    -webkit-text-fill-color: currentColor;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: var(--control-shadow);
+    transition: background 0.15s ease, color 0.15s ease, filter 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .button:hover {
+    background: var(--accent-hover);
+    background-color: var(--accent-hover);
+    color: var(--accent-ink);
+    -webkit-text-fill-color: currentColor;
+    filter: brightness(1.03);
+  }
+
+  .button:active {
+    transform: translateY(1px);
+  }
+
+  .button:focus-visible,
+  .link-button:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
+
+  .button--primary {
+    background: var(--accent);
+    background-color: var(--accent);
+    color: var(--accent-ink);
+    -webkit-text-fill-color: currentColor;
+  }
+
+  .button--primary:hover {
+    background: var(--accent-hover);
+    background-color: var(--accent-hover);
+    color: var(--accent-ink);
+    -webkit-text-fill-color: currentColor;
+  }
+
+  .button--secondary {
+    min-height: 2.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--control-radius);
+    background: var(--bg);
+    color: var(--muted);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+  }
+
+  .button--secondary:hover {
+    background: var(--card);
+    border-color: rgb(10 10 10 / 18%);
+    color: var(--ink);
+  }
+
+  .button--ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: var(--control-radius);
+    background: transparent;
+    color: var(--muted);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .button--ghost:hover {
+    background: rgb(0 0 0 / 4%);
+    color: var(--ink);
+  }
+
   .link-button {
     border: none;
     background: none;
     padding: 0;
     color: var(--accent);
-    font-family: var(--font-sans);
+    font-family: var(--font-body);
     font-size: 0.88rem;
     cursor: pointer;
     text-decoration: underline;
@@ -13,6 +116,12 @@
 
   .link-button:hover {
     text-decoration-thickness: 2px;
+  }
+
+  .button svg {
+    width: 1rem;
+    height: 1rem;
+    flex: 0 0 auto;
   }
 
   form.inline {

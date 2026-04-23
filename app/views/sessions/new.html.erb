@@ -1,31 +1,24 @@
 <% content_for :title, "Log In — Handshake" %>
 
-<div class="login-page">
-  <div class="login-card">
-    <h1 class="login-title">Handshake.</h1>
+<div class="auth-page">
+  <%= render "shared/auth/pitch" %>
 
-    <%= form_with url: session_path, scope: :session, class: "login-form" do |f| %>
-      <div class="login-field">
-        <%= f.email_field :email, 
-          required: true, 
-          autocomplete: "username", 
-          placeholder: "Email address",
-          class: "login-input" %>
-      </div>
-      
-      <div class="login-field">
-        <%= f.password_field :password, 
-          required: true, 
-          autocomplete: "current-password", 
-          placeholder: "Password",
-          class: "login-input" %>
-      </div>
-      
-      <%= f.submit "Log In", class: "login-button" %>
-    <% end %>
+  <section class="auth-panel" aria-labelledby="signin-title">
+    <div class="auth-card">
+      <header class="auth-card__header">
+        <h2 id="signin-title" class="title title--auth">Welcome back<span class="title__accent">.</span></h2>
+        <p>Log in to continue building your career.</p>
+      </header>
 
-    <div class="login-footer">
-      <%= link_to "Need an account? Sign up.", signup_path, class: "login-link" %>
+      <%= render "form" %>
+
+      <p class="auth-switch">
+        New to Handshake?
+        <%= link_to signup_path do %>
+          Create your account
+          <span aria-hidden="true">&rarr;</span>
+        <% end %>
+      </p>
     </div>
-  </div>
+  </section>
 </div>
