@@ -1,0 +1,12 @@
+<li class="history-row">
+  <div>
+    <strong><%= experience.name %></strong>
+    <% if experience.year.present? %><span class="muted"> · <%= experience.year %></span><% end %>
+    <% if experience.title.present? %><div class="muted"><%= experience.title %></div><% end %>
+  </div>
+
+  <div class="action-row">
+    <%= link_to "Edit", edit_experience_path(experience), class: "link" %>
+    <%= button_to "Delete", experience_path(experience), method: :delete, class: "btn btn--link", form: { data: { turbo_confirm: "Delete this experience?" } } %>
+  </div>
+</li>

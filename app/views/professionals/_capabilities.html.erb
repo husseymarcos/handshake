@@ -1,0 +1,16 @@
+<section class="card card--section">
+  <h2 class="title title--section">Capabilities</h2>
+
+  <%= form_with model: Capability.new, url: capabilities_path, class: "row" do |f| %>
+    <%= f.text_field :name, placeholder: "e.g. Ruby on Rails", class: "input input--massive-plain input--grow" %>
+    <%= f.submit "Add", class: "pill pill--accent" %>
+  <% end %>
+
+  <% if professional.capabilities.any? %>
+    <ul class="list-plain list-flex">
+      <%= render partial: "professionals/capability", collection: professional.capabilities.alphabetically %>
+    </ul>
+  <% else %>
+    <p class="muted">No capabilities yet — add a few you want emphasized on resumes.</p>
+  <% end %>
+</section>

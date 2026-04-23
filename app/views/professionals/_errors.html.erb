@@ -1,0 +1,10 @@
+<% if professional.errors.any? %>
+  <div class="error-panel" role="alert">
+    <%= local_assigns[:summary] %>
+    <ul class="error-list <%= local_assigns[:list_class] %>">
+      <% professional.errors.full_messages.each do |msg| %>
+        <li class="error-list__item"><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

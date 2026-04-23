@@ -1,0 +1,15 @@
+<div class="auth-field">
+  <% if local_assigns[:header] %>
+    <div class="auth-field__header">
+      <%= form.label attribute, label, class: "auth-field__label" %>
+      <%= header %>
+    </div>
+  <% else %>
+    <%= form.label attribute, label, class: "auth-field__label" %>
+  <% end %>
+
+  <div class="auth-field__control">
+    <%= render "shared/auth/icons/#{icon}" %>
+    <%= form.public_send(field, attribute, **options) %>
+  </div>
+</div>

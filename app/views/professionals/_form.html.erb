@@ -1,0 +1,15 @@
+<%= form_with model: professional, class: "form-stack" do |f| %>
+  <%= render "professionals/errors", professional: professional %>
+
+  <label class="field">
+    <span class="field__label">Name</span>
+    <%= f.text_field :name, class: "input input--plain" %>
+  </label>
+
+  <label class="field">
+    <span class="field__label">Email</span>
+    <%= f.email_field :email, class: "input input--plain" %>
+  </label>
+
+  <%= f.submit "Save changes", class: "pill pill--accent btn--fit" %>
+<% end %>

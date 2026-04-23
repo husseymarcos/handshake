@@ -1,0 +1,14 @@
+<section class="card card--section">
+  <div class="row row--between">
+    <h2 class="title title--section">Experience</h2>
+    <%= link_to "Add experience", new_experience_path, class: "pill pill--accent" %>
+  </div>
+
+  <% if professional.experiences.any? %>
+    <ul class="list-plain">
+      <%= render partial: "professionals/experience", collection: professional.experiences.chronologically %>
+    </ul>
+  <% else %>
+    <p class="muted">Add experience so the AI can cite your background.</p>
+  <% end %>
+</section>
