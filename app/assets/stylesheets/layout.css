@@ -244,6 +244,30 @@
     padding: var(--space-lg);
   }
 
+  /* Home screen compact layout */
+  .home-screen .hero {
+    margin-block-end: var(--space-md);
+  }
+
+  .home-screen .hero__stamp {
+    inline-size: 240px;
+    margin-block-end: var(--space-xs);
+  }
+
+  .home-screen .hero__headline {
+    gap: 3rem;
+    justify-content: space-between;
+    margin-block-end: var(--space-sm);
+  }
+
+  .home-screen .hero__sidekick {
+    inline-size: 200px;
+  }
+
+  .home-screen .title--hero {
+    font-size: 3rem;
+  }
+
   @media (max-width: 768px) {
     .auth-page {
       grid-template-columns: 1fr;

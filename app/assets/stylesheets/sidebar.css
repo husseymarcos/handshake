@@ -34,6 +34,10 @@
     padding: var(--space-lg) var(--space-xl) var(--space-xxl);
   }
 
+  .app-layout__main:has(.home-screen) .app-layout__content {
+    padding-inline-end: 4rem;
+  }
+
   .sidebar-nav {
     display: flex;
     flex-direction: column;
@@ -93,7 +97,7 @@
   .sidebar-illustration {
     display: flex;
     justify-content: center;
-    margin-block-start: auto;
+    margin-block-start: var(--space-xl);
     padding-block: var(--space);
   }
 
@@ -107,7 +111,7 @@
   }
 
   .sidebar-image--mug {
-    inline-size: 100px;
+    inline-size: 140px;
   }
 
   .account-card {
