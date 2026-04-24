@@ -8,17 +8,17 @@
   </div>
 
   <div class="auth-field__control">
-    <%= f.text_area :posting, rows: 8, placeholder: "Paste the job description here...", class: "input home-textarea", data: { opportunity_form_target: "textarea", action: "input->opportunity-form#updateCounter" } %>
+    <%= f.text_area :posting, rows: 8, placeholder: "Paste the job description here...", class: "input home-textarea", data: { character_counter_target: "textarea", clipboard_paste_target: "textarea", action: "input->character-counter#updateCounter" } %>
   </div>
 
   <div class="form-panel__footer">
-    <button type="button" class="btn btn--secondary" data-action="click->opportunity-form#pasteFromClipboard">
+    <button type="button" class="btn btn--secondary" data-action="click->clipboard-paste#paste">
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
         <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
       </svg>
       Paste from clipboard
     </button>
-    <span class="meta" data-opportunity-form-target="counter">0 characters</span>
+    <span class="meta" data-character-counter-target="counter">0 characters</span>
   </div>
 </div>

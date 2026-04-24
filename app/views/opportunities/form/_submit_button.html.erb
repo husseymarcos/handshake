@@ -1,4 +1,4 @@
-<%= button_tag type: :submit, class: "btn btn--primary btn--block cta-button" do %>
+<%= button_tag type: :submit, class: "btn btn--primary btn--block cta-button", data: { turbo_submits_with: "<span class='spinner'></span> ADAPTING..." } do %>
   <%= render "shared/icons/sparkle" %>
   ADAPT & GENERATE PDF
   <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
