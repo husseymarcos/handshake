@@ -81,10 +81,11 @@
   /* Lede/intro text */
   .lede {
     font-size: 1.05rem;
-    max-inline-size: 40rem;
+    max-inline-size: 36rem;
     margin-block-start: var(--space-sm);
-    color: var(--color-ink-muted);
-    font-weight: 500;
+    color: var(--color-ink);
+    font-weight: 400;
+    line-height: 1.45;
   }
 
   /* Muted text */

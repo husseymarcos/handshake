@@ -1,11 +1,11 @@
 <div class="form-panel">
   <div class="form-panel__header">
-    <%= render "shared/icons/star" %>
+    <%= render "shared/icons/sparkle" %>
     <div class="form-panel__body">
       <div class="form-panel__title">3. Tone (Optional)</div>
       <div class="form-panel__description">How should we sound?</div>
     </div>
   </div>
 
-  <%= f.select :tone, Opportunity::TONES, { include_blank: "Use my default tone" }, class: "home-select" %>
+  <%= f.select :tone, Opportunity::TONES.map { |t| t == "Professional" ? ["Professional & Confident (Default)", t] : [t, t] }, {}, class: "home-select" %>
 </div>

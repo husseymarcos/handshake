@@ -1,16 +1,23 @@
-<div class="form-panel">
+<div class="form-panel form-panel--muted">
   <div class="form-panel__header">
-    <div class="icon-box">
-      <%= render "shared/icons/info" %>
-    </div>
+    <%= render "shared/icons/sparkle" %>
     <div class="form-panel__body">
       <div class="form-panel__title">What happens next?</div>
       <div class="form-panel__description">
-        We read the job posting, then craft a resume that speaks directly to what they're looking for. In 30 seconds, you'll have a tailored PDF ready to send.
+        Our Adapt Engine will intelligently merge your Career Profile with this job blueprint to craft a highly targeted resume. You'll get a polished PDF, ready to send.
       </div>
     </div>
-    <div class="media-thumb">
-      <%= image_tag "writeonce.png", alt: "", class: "media-thumb__image" %>
+    <div class="pdf-thumb">
+      <svg viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="4" width="56" height="72" rx="4" fill="white" stroke="#0a0a0a" stroke-width="2"/>
+        <rect x="12" y="4" width="20" height="12" rx="2" fill="#0a0a0a"/>
+        <text x="14" y="13" fill="white" font-size="8" font-weight="700" font-family="sans-serif">PDF</text>
+        <line x1="14" y1="24" x2="50" y2="24" stroke="#d4d4d4" stroke-width="2" stroke-linecap="round"/>
+        <line x1="14" y1="32" x2="42" y2="32" stroke="#d4d4d4" stroke-width="2" stroke-linecap="round"/>
+        <line x1="14" y1="40" x2="46" y2="40" stroke="#d4d4d4" stroke-width="2" stroke-linecap="round"/>
+        <line x1="14" y1="48" x2="38" y2="48" stroke="#d4d4d4" stroke-width="2" stroke-linecap="round"/>
+        <line x1="14" y1="56" x2="44" y2="56" stroke="#d4d4d4" stroke-width="2" stroke-linecap="round"/>
+      </svg>
     </div>
   </div>
 </div>

@@ -229,12 +229,25 @@
     margin-block-end: var(--space-md);
   }
 
+  .opportunity-form__grid--bottom {
+    margin-block-end: 0;
+  }
+
+  @media (max-width: 768px) {
+    .opportunity-form__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   .form-panel {
-    margin-block-end: var(--space-md);
-    padding: var(--space-md);
+    padding: var(--space-lg);
     border: 1px solid var(--color-border);
     border-radius: 1.25rem;
     background: var(--color-paper);
+  }
+
+  .form-panel--muted {
+    background: rgb(250 250 249);
   }
 
   .form-panel__header {
@@ -253,7 +266,9 @@
     margin-block-end: var(--space-xs);
     color: var(--color-ink);
     font-size: var(--text-normal);
-    font-weight: 700;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
   }
 
   .form-panel__description {
@@ -275,6 +290,43 @@
     align-items: center;
     justify-content: space-between;
     margin-block-start: 0.75rem;
+  }
+
+  .form-card__icon {
+    flex-shrink: 0;
+    inline-size: 1.5rem;
+    block-size: 1.5rem;
+    color: var(--color-ink);
+  }
+
+  .handwritten-note {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    margin-block-start: var(--space);
+    color: var(--color-ink-muted);
+    font-family: "Comic Sans MS", "Chalkboard SE", "Marker Felt", cursive, sans-serif;
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+
+  .handwritten-note__arrow {
+    flex-shrink: 0;
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
+    transform: rotate(-45deg);
+    color: var(--color-ink-muted);
+  }
+
+  .pdf-thumb {
+    flex-shrink: 0;
+    inline-size: 64px;
+    block-size: 80px;
+  }
+
+  .pdf-thumb svg {
+    inline-size: 100%;
+    block-size: auto;
   }
 
   .privacy-note {

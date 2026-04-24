@@ -93,11 +93,11 @@
   }
 
   .hero {
-    margin-block-end: 2.5rem;
+    margin-block-end: var(--space-xl);
   }
 
   .hero__stamp {
-    inline-size: 280px;
+    inline-size: 220px;
     block-size: auto;
     display: block;
     margin-block-end: var(--space-sm);
@@ -107,12 +107,12 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 6rem;
+    gap: 3rem;
     margin-block-end: var(--space);
   }
 
   .hero__sidekick {
-    inline-size: 280px;
+    inline-size: 220px;
     block-size: auto;
     display: block;
   }
@@ -126,6 +126,18 @@
     inline-size: 100%;
     block-size: auto;
     opacity: 0.8;
+  }
+
+  @media (max-width: 768px) {
+    .hero__headline {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-md);
+    }
+
+    .hero__sidekick {
+      inline-size: 180px;
+    }
   }
 
   .icon-box {
