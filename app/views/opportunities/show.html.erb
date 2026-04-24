@@ -1,25 +1,21 @@
 <% content_for :title, "#{@opportunity.organization_name} — Handshake" %>
 
-<div class="page-header row row--between">
-  <div>
-    <h1 class="display title--compact"><%= @opportunity.organization_name %></h1>
-    <p class="muted">Adapted <%= l @opportunity.created_at, format: :long %></p>
+<div class="show-header">
+  <div class="show-header__top">
+    <%= link_to "← See previous opportunities", opportunities_path, class: "show-header__back" %>
+    <% if @opportunity.pdf.attached? %>
+      <%= link_to "Download PDF", opportunity_download_path(@opportunity), class: "btn btn--primary btn--small" %>
+    <% end %>
   </div>
-  <% if @opportunity.pdf.attached? %>
-    <%= link_to "Download Resume", opportunity_download_path(@opportunity), class: "pill pill--accent" %>
-  <% end %>
+
+  <div class="show-header__info">
+    <h1 class="show-header__title"><%= @opportunity.organization_name %></h1>
+    <p class="show-header__meta">Adapted <%= l @opportunity.created_at, format: :long %></p>
+  </div>
 </div>
 
-<section class="card card--section">
-  <h2 class="title title--section">Posting used</h2>
-  <pre class="preview"><%= @opportunity.posting %></pre>
-</section>
-
-<% if @opportunity.generated_typst.present? %>
-  <section class="card card--section">
-    <h2 class="title title--section">Adapted Typst</h2>
-    <pre class="preview"><%= @opportunity.generated_typst %></pre>
-  </section>
+<% if @opportunity.pdf.attached? %>
+  <div class="pdf-viewer">
+    <iframe src="<%= rails_blob_path(@opportunity.pdf, disposition: :inline) %>" class="pdf-viewer__frame" title="Adapted resume for <%= @opportunity.organization_name %>"></iframe>
+  </div>
 <% end %>
-
-<p><%= link_to "← History", opportunities_path, class: "link" %></p>

@@ -46,6 +46,10 @@
 }
 
 @layer components {
+  .app-layout__main {
+    padding-block: var(--space-lg);
+    padding-inline-end: var(--space-lg);
+  }
   /* Stack layout - vertical spacing */
   .stack {
     display: flex;
@@ -268,7 +272,63 @@
     font-size: 3rem;
   }
 
+  /* Show page header */
+  .show-header {
+    margin-block-end: var(--space-lg);
+  }
+
+  .show-header__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-block-end: var(--space-md);
+  }
+
+  .show-header__back {
+    color: var(--color-ink-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .show-header__back:hover {
+    color: var(--color-ink);
+  }
+
+  .show-header__title {
+    font-size: var(--text-x-large);
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .show-header__meta {
+    color: var(--color-ink-muted);
+    font-size: var(--text-small);
+    margin: var(--space-xs) 0 0;
+  }
+
+  /* PDF viewer */
+  .pdf-viewer {
+    background: var(--color-paper);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border-light);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    block-size: calc(100dvh - 280px);
+    min-block-size: 500px;
+  }
+
+  .pdf-viewer__frame {
+    inline-size: 100%;
+    block-size: 100%;
+    border: 0;
+  }
+
   @media (max-width: 768px) {
+    .app-layout__main {
+      padding: 0;
+    }
+
     .auth-page {
       grid-template-columns: 1fr;
       padding-inline: 0;
@@ -281,6 +341,11 @@
     .auth-panel {
       min-block-size: 100vh;
       padding: var(--space-md);
+    }
+
+    .pdf-viewer {
+      block-size: calc(100dvh - 240px);
+      min-block-size: 400px;
     }
   }
 }
