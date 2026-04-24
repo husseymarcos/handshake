@@ -47,28 +47,7 @@ class OpportunityTest < ActiveSupport::TestCase
     assert_not Opportunity.exists?(opportunity.id)
   end
 
-  test "posting is normalized on validation" do
-    opportunity = professionals(:alice).opportunities.build(
-      organization_name: "Test",
-      posting: "A" * 40000
-    )
-    opportunity.valid?
-
-    assert opportunity.posting_truncated?
-    assert opportunity.posting.length <= PostingNormalizer::JOB_DESCRIPTION_MAX_CHARS
-  end
-
-  test "posting_truncated is false when under token limit" do
-    opportunity = professionals(:alice).opportunities.build(
-      organization_name: "Test",
-      posting: "Short job description"
-    )
-    opportunity.valid?
-
-    assert_not opportunity.posting_truncated?
-  end
-
-  test "adapt! raises RecordInvalid when opportunity is invalid" do
+  test "generating a resume raises RecordInvalid when opportunity is invalid" do
     opportunity = professionals(:alice).opportunities.build(organization_name: nil, posting: nil)
 
     assert_raises(ActiveRecord::RecordInvalid) do
@@ -76,7 +55,7 @@ class OpportunityTest < ActiveSupport::TestCase
     end
   end
 
-  test "adapt! stores generated typst" do
+  test "generating a resume stores generated typst" do
     opp = professionals(:alice).opportunities.create!(organization_name: "Acme", posting: "A posting")
 
     with_fake_resume_generation do
@@ -142,7 +121,7 @@ class OpportunityTest < ActiveSupport::TestCase
     assert_equal "application/pdf", opp.pdf.content_type
   end
 
-  test "adapt! uses transaction to ensure consistency" do
+  test "generating a resume keeps the opportunity consistent" do
     opp = professionals(:alice).opportunities.create!(organization_name: "Acme", posting: "A posting")
 
     with_fake_resume_generation do
@@ -187,27 +166,5 @@ class OpportunityTest < ActiveSupport::TestCase
     end
 
     assert opp.pdf.attached?
-  end
-
-  test "posting normalization handles nil posting" do
-    opportunity = Opportunity.new(professional: professionals(:alice), organization_name: "Test")
-    opportunity.posting = nil
-
-    opportunity.valid?
-
-    # The normalize_posting method sets posting to "" when nil, but validation may not run the setter
-    assert_includes [ nil, "" ], opportunity.posting
-  end
-
-  test "posting normalization handles empty posting" do
-    opportunity = Opportunity.new(
-      professional: professionals(:alice),
-      organization_name: "Test",
-      posting: ""
-    )
-
-    opportunity.valid?
-
-    assert_not opportunity.posting_truncated?
   end
 end

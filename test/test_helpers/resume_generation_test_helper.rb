@@ -1,17 +1,17 @@
 module ResumeGenerationTestHelper
   def with_fake_resume_generation(pdf_bytes: minimal_pdf)
-    original_adapt = ResumeAdapter.instance_method(:adapt)
-    ResumeAdapter.define_method(:adapt) do |**_args|
-      "#set text[Hello]"
+    original_generate = ResumeWriter.instance_method(:generate)
+    ResumeWriter.define_method(:generate) do |**_args|
+      GeneratedResume.new("#set text[Hello]")
     end
 
-    original_compile = ResumeTypstPdf.method(:compile_to_pdf_bytes)
-    ResumeTypstPdf.define_singleton_method(:compile_to_pdf_bytes) { |_| pdf_bytes }
+    original_pdf = GeneratedResume.instance_method(:pdf)
+    GeneratedResume.define_method(:pdf) { pdf_bytes }
 
     yield
   ensure
-    ResumeAdapter.define_method(:adapt, original_adapt)
-    ResumeTypstPdf.define_singleton_method(:compile_to_pdf_bytes, original_compile)
+    ResumeWriter.define_method(:generate, original_generate)
+    GeneratedResume.define_method(:pdf, original_pdf)
   end
 
   def minimal_pdf

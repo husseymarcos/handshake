@@ -6,4 +6,4 @@
   </div>
 </div>
 
-<%= f.select :tone, Opportunity::TONES.map { |t| t == "Professional" ? ["Professional & Confident (Default)", t] : [t, t] }, {}, class: "home-select" %>
+<%= f.select :tone, Opportunity.tones.map { |t| t == "Professional" ? ["Professional & Confident (Default)", t] : [t, t] }, {}, class: "home-select" %>

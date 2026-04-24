@@ -4,9 +4,6 @@
   <div>
     <h1 class="display title--compact"><%= @opportunity.organization_name %></h1>
     <p class="muted">Adapted <%= l @opportunity.created_at, format: :long %></p>
-    <% if @opportunity.posting_truncated? %>
-      <p class="notice-card" role="alert">The posting was shortened to the token limit.</p>
-    <% end %>
   </div>
   <% if @opportunity.pdf.attached? %>
     <%= link_to "Download Resume", opportunity_download_path(@opportunity), class: "pill pill--accent" %>
