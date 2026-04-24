@@ -1,7 +1,7 @@
 <div class="error-panel error-panel--spaced" role="alert">
-  <div class="error-panel__title"><%= pluralize(errors.count, "issue") %> to fix:</div>
+  <div class="error-panel__title"><%= pluralize(opportunity.errors.count, "issue") %> to fix:</div>
   <ul class="error-list">
-    <% errors.full_messages.each do |msg| %>
+    <% opportunity.errors.full_messages.each do |msg| %>
       <li class="error-list__item"><%= msg %></li>
     <% end %>
   </ul>

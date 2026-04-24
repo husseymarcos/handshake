@@ -1,5 +1,5 @@
 module ResumeGenerationTestHelper
-  def with_fake_resume_generation(pdf_bytes: minimal_pdf, pages: 1)
+  def with_fake_resume_generation(pdf_bytes: minimal_pdf)
     original_adapt = ResumeAdapter.instance_method(:adapt)
     ResumeAdapter.define_method(:adapt) do |**_args|
       "#set text[Hello]"
@@ -8,14 +8,10 @@ module ResumeGenerationTestHelper
     original_compile = ResumeTypstPdf.method(:compile_to_pdf_bytes)
     ResumeTypstPdf.define_singleton_method(:compile_to_pdf_bytes) { |_| pdf_bytes }
 
-    original_count = ResumeTypstPdf.method(:page_count)
-    ResumeTypstPdf.define_singleton_method(:page_count) { |_| pages }
-
     yield
   ensure
     ResumeAdapter.define_method(:adapt, original_adapt)
     ResumeTypstPdf.define_singleton_method(:compile_to_pdf_bytes, original_compile)
-    ResumeTypstPdf.define_singleton_method(:page_count, original_count)
   end
 
   def minimal_pdf

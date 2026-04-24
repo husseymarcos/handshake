@@ -20,14 +20,9 @@ class OpportunitiesController < ApplicationController
 
     @opportunity.adapt!
     if @opportunity.posting_truncated?
-      flash[:warning] = "Posting was shortened to stay within the #{Handshake::JOB_DESCRIPTION_MAX_TOKENS} token limit."
+      flash[:warning] = "Posting was shortened to stay within the #{PostingNormalizer::JOB_DESCRIPTION_MAX_TOKENS} token limit."
     end
     redirect_to @opportunity, notice: "Resume adapted."
-  rescue Opportunity::UnableToFitOnePage => e
-    @opportunity&.destroy
-    flash.now[:alert] = e.to_s
-    @opportunity = Current.professional.opportunities.build(opportunity_params)
-    render :new, status: :unprocessable_entity
   rescue RubyLLM::Error, ResumeTypstPdf::Error => e
     @opportunity&.destroy
     flash.now[:alert] = e.message
@@ -42,6 +37,6 @@ class OpportunitiesController < ApplicationController
     end
 
     def opportunity_params
-      params.require(:opportunity).permit(:organization_name, :posting)
+      params.require(:opportunity).permit(:organization_name, :posting, :tone)
     end
 end

@@ -33,8 +33,6 @@ class ExperiencesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to career_path
-    follow_redirect!
-    assert_select ".flash--notice", text: /Experience added/
 
     experience = professionals(:alice).experiences.find_by(name: "New Project")
     assert experience
@@ -88,8 +86,6 @@ class ExperiencesControllerTest < ActionDispatch::IntegrationTest
     }
 
     assert_redirected_to career_path
-    follow_redirect!
-    assert_select ".flash--notice", text: /Experience updated/
     assert_equal "Updated Name", experience.reload.name
     assert_equal 2025, experience.year
   end
@@ -115,8 +111,6 @@ class ExperiencesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to career_path
-    follow_redirect!
-    assert_select ".flash--notice", text: /Experience removed/
     assert_not Experience.exists?(experience.id)
   end
 

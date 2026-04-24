@@ -1,5 +1,6 @@
 class ProfessionalsController < ApplicationController
   allow_unauthenticated_access only: %i[ new create ]
+  layout "auth", only: %i[ new create ]
 
   before_action :set_professional, only: %i[ show edit update ]
   before_action :require_self, only: %i[ show edit update ]

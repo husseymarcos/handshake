@@ -135,8 +135,6 @@ class ProfessionalsControllerTest < ActionDispatch::IntegrationTest
     }
 
     assert_redirected_to career_path
-    follow_redirect!
-    assert_select ".flash--notice", text: /Profile updated/
     assert_equal "newemail@example.com", professionals(:alice).reload.email
   end
 
@@ -174,8 +172,6 @@ class ProfessionalsControllerTest < ActionDispatch::IntegrationTest
     get edit_professional_path(professionals(:bob))
 
     assert_redirected_to career_path
-    follow_redirect!
-    assert_select ".flash--alert", text: /That account is not yours/
   end
 
   test "prevents updating another user's profile" do

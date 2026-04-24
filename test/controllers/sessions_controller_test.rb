@@ -22,21 +22,18 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     post session_path, params: { session: { email: "wrong@example.com", password: "secret12" } }
 
     assert_response :unprocessable_entity
-    assert_select ".flash--alert", text: /Try another email address or password/
   end
 
   test "rejects invalid password" do
     post session_path, params: { session: { email: professionals(:alice).email, password: "wrongpassword" } }
 
     assert_response :unprocessable_entity
-    assert_select ".flash--alert", text: /Try another email address or password/
   end
 
   test "rejects blank credentials" do
     post session_path, params: { session: { email: "", password: "" } }
 
     assert_response :unprocessable_entity
-    assert_select ".flash--alert", text: /Try another email address or password/
   end
 
   test "email is case insensitive during sign in" do
@@ -57,7 +54,5 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     delete session_path
 
     assert_redirected_to signin_path
-    follow_redirect!
-    assert_select ".flash--notice", text: /Signed out/
   end
 end

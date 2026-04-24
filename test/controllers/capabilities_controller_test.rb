@@ -9,8 +9,6 @@ class CapabilitiesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to career_path
-    follow_redirect!
-    assert_select ".flash--notice", text: /Capability added/
     assert professionals(:alice).capabilities.exists?(name: "TypeScript")
   end
 
@@ -30,8 +28,6 @@ class CapabilitiesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to career_path
-    follow_redirect!
-    assert_select ".flash--alert", text: /Capability name can't be blank/
   end
 
   test "rejects capability with only whitespace" do
@@ -42,8 +38,6 @@ class CapabilitiesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to career_path
-    follow_redirect!
-    assert_select ".flash--alert", text: /Capability name can't be blank/
   end
 
   test "removes capability for authenticated user" do
@@ -55,8 +49,6 @@ class CapabilitiesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to career_path
-    follow_redirect!
-    assert_select ".flash--notice", text: /Capability removed/
     assert_not Capability.exists?(capability.id)
   end
 

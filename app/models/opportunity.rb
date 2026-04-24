@@ -1,21 +1,12 @@
 class Opportunity < ApplicationRecord
-  class UnableToFitOnePage < StandardError
-    def to_s
-      "Unable to fit content to one page. Try removing capabilities or shortening posting."
-    end
-  end
-
-  REFINEMENT_HINTS = [
-    "Tighten vertical spacing, reduce margin sizes slightly, and remove blank lines between sections.",
-    "Use a slightly smaller body font (e.g. 9–9.5pt) and compact section headings.",
-    "Aggressively shorten bullets: one line each, drop lowest-priority items if needed."
-  ].freeze
+  TONES = %w[Professional Enthusiastic Technical Formal Casual].freeze
 
   belongs_to :professional
   has_one_attached :pdf
 
   validates :organization_name, presence: true
   validates :posting, presence: true
+  validates :tone, inclusion: { in: TONES, allow_blank: true }
 
   before_validation :normalize_posting
 
@@ -24,13 +15,12 @@ class Opportunity < ApplicationRecord
   def adapt!
     raise ActiveRecord::RecordInvalid, self unless valid?
 
-    typst = resume_adapter.adapt(organization_name:, posting:, refinement: nil)
-    pdf_bytes, final_typst = compile_pdf_bytes!(typst:)
+    pdf_bytes, final_typst = pdf_compiler.compile(organization_name:, posting:, tone:)
 
     transaction do
       pdf.attach(
         io: StringIO.new(pdf_bytes),
-        filename: "#{organization_name.parameterize.presence || 'resume'}.pdf",
+        filename: pdf_filename,
         content_type: "application/pdf"
       )
       update!(generated_typst: final_typst)
@@ -39,35 +29,19 @@ class Opportunity < ApplicationRecord
 
   private
 
+    def normalize_posting
+      self.posting, self.posting_truncated = PostingNormalizer.new(posting).normalize
+    end
+
+    def pdf_compiler
+      PdfCompiler.new(adapter: resume_adapter)
+    end
+
     def resume_adapter
       ResumeAdapter.new(professional)
     end
 
-    def normalize_posting
-      text = posting.to_s
-      if Handshake.estimate_tokens(text) > Handshake::JOB_DESCRIPTION_MAX_TOKENS
-        self.posting = text.truncate(Handshake::JOB_DESCRIPTION_MAX_CHARS, omission: "")
-        self.posting_truncated = true
-      else
-        self.posting_truncated = false
-      end
-    end
-
-    def compile_pdf_bytes!(typst:)
-      4.times do |i|
-        pdf_bytes = ResumeTypstPdf.compile_to_pdf_bytes(typst)
-        pages = ResumeTypstPdf.page_count(pdf_bytes)
-        return [ pdf_bytes, typst ] if pages == 1
-
-        raise UnableToFitOnePage if i == 3
-
-        typst = resume_adapter.adapt(
-          organization_name:,
-          posting:,
-          refinement: REFINEMENT_HINTS[i]
-        )
-      end
-
-      raise UnableToFitOnePage
+    def pdf_filename
+      "#{organization_name.parameterize.presence || 'resume'}.pdf"
     end
 end

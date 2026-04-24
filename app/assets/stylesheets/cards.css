@@ -42,7 +42,7 @@
 
   .auth-card {
     inline-size: 100%;
-    max-inline-size: 360px;
+    max-inline-size: 460px;
     padding: var(--space-lg);
     border: 1px solid rgb(10 10 10 / 8%);
     border-radius: var(--radius-lg);
