@@ -10,15 +10,6 @@ class ResumeWriterTest < ActiveSupport::TestCase
     assert_equal ResumeWriter.system_instructions, chat.instructions
   end
 
-  test "generating a resume includes the selected tone in the prompt" do
-    chat = FakeChat.new("#set text[Hello]")
-    writer = ResumeWriter.new(professionals(:alice), chat: chat)
-
-    writer.generate(organization_name: "Acme", posting: "A posting", tone: "Technical")
-
-    assert_includes chat.prompt, "Tone: Technical"
-  end
-
   test "generating a resume returns a generated resume" do
     writer = ResumeWriter.new(professionals(:alice), chat: FakeChat.new("#set text[Hello]"))
 

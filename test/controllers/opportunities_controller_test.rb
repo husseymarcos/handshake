@@ -17,18 +17,6 @@ class OpportunitiesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "renders new opportunity form with tone select" do
-    sign_in_as(professionals(:alice))
-
-    get new_opportunity_path
-
-    assert_response :success
-    assert_select "form[action='#{opportunities_path}']"
-    assert_select "input[name='opportunity[organization_name]']"
-    assert_select "textarea[name='opportunity[posting]']"
-    assert_select "select[name='opportunity[tone]']"
-  end
-
   test "renders new opportunity form" do
     sign_in_as(professionals(:alice))
 
@@ -38,28 +26,6 @@ class OpportunitiesControllerTest < ActionDispatch::IntegrationTest
     assert_select "form[action='#{opportunities_path}']"
     assert_select "input[name='opportunity[organization_name]']"
     assert_select "textarea[name='opportunity[posting]']"
-  end
-
-  test "creates opportunity with tone and generates resume" do
-    sign_in_as(professionals(:alice))
-
-    with_fake_resume_generation do
-      assert_difference("Opportunity.count") do
-        post opportunities_path, params: {
-          opportunity: {
-            organization_name: "Tone Corp",
-            posting: "Looking for a Ruby developer",
-            tone: "Enthusiastic"
-          }
-        }
-      end
-    end
-
-    assert_redirected_to opportunity_path(Opportunity.last)
-
-    opportunity = professionals(:alice).opportunities.find_by(organization_name: "Tone Corp")
-    assert_equal "Enthusiastic", opportunity.tone
-    assert opportunity.pdf.attached?
   end
 
   test "creates opportunity and generates resume" do

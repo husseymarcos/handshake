@@ -1,5 +1,4 @@
 class Opportunity < ApplicationRecord
-  include ToneSelectable
   include ResumeGeneratable
 
   belongs_to :professional

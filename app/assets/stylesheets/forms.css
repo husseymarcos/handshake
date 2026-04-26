@@ -229,21 +229,6 @@
     margin-block-end: var(--space-md);
   }
 
-  .opportunity-form__grid--bottom {
-    margin-block-end: 0;
-  }
-
-  .tone-section {
-    min-inline-size: 0;
-  }
-
-  .preview-section {
-    padding: var(--space);
-    border-radius: var(--radius-lg);
-    background: rgb(250 250 249);
-    min-inline-size: 0;
-  }
-
   @media (max-width: 768px) {
     .opportunity-form__grid {
       grid-template-columns: 1fr;
@@ -335,18 +320,6 @@
     block-size: auto;
     margin-block-start: var(--space-sm);
     margin-inline-start: 2rem;
-  }
-
-  .pdf-thumb {
-    flex-shrink: 0;
-    inline-size: 100px;
-    block-size: auto;
-  }
-
-  .pdf-thumb img {
-    inline-size: 100%;
-    block-size: auto;
-    display: block;
   }
 
   .privacy-note {

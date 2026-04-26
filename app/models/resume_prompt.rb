@@ -1,9 +1,8 @@
 class ResumePrompt
-  def initialize(professional:, organization_name:, posting:, tone:)
+  def initialize(professional:, organization_name:, posting:)
     @professional = professional
     @organization_name = organization_name
     @posting = posting
-    @tone = tone
   end
 
   def to_s
@@ -18,13 +17,13 @@ class ResumePrompt
 
       Target organization: #{organization_name}
       Posting:
-      #{posting}#{tone_line}
+      #{posting}
     TXT
   end
 
   private
 
-  attr_reader :professional, :organization_name, :posting, :tone
+  attr_reader :professional, :organization_name, :posting
 
   def capabilities
     professional.capabilities.alphabetically.pluck(:name).join(", ").presence || "(none yet - infer sparingly from experience)"
@@ -32,9 +31,5 @@ class ResumePrompt
 
   def experience
     professional.experiences.chronologically.map { |entry| ExperienceFormatter.new(entry).to_s }.join("\n").presence || "(none listed)"
-  end
-
-  def tone_line
-    tone.present? ? "\nTone: #{tone}" : ""
   end
 end

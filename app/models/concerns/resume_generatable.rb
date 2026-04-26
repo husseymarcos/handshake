@@ -4,7 +4,7 @@ module ResumeGeneratable
   def adapt!
     raise ActiveRecord::RecordInvalid, self unless valid?
 
-    resume = ResumeWriter.new(professional).generate(organization_name:, posting:, tone:)
+    resume = ResumeWriter.new(professional).generate(organization_name:, posting:)
 
     transaction do
       attach_pdf(resume.pdf)

@@ -254,13 +254,14 @@
   }
 
   .home-screen .hero__stamp {
-    inline-size: 240px;
-    margin-block-end: var(--space-xs);
+    inline-size: 160px;
+    margin-block-end: 0;
   }
 
   .home-screen .hero__headline {
     gap: 3rem;
     justify-content: space-between;
+    margin-block-start: -0.5rem;
     margin-block-end: var(--space-sm);
   }
 

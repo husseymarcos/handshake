@@ -132,39 +132,4 @@ class OpportunityTest < ActiveSupport::TestCase
     assert opp.generated_typst.present?
     assert opp.persisted?
   end
-
-  test "tone is optional and can be blank" do
-    opportunity = professionals(:alice).opportunities.build(
-      organization_name: "Test",
-      posting: "A job description",
-      tone: ""
-    )
-
-    assert opportunity.valid?
-  end
-
-  test "tone must be from the allowed list" do
-    opportunity = professionals(:alice).opportunities.build(
-      organization_name: "Test",
-      posting: "A job description",
-      tone: "InvalidTone"
-    )
-
-    assert_not opportunity.valid?
-    assert_includes opportunity.errors[:tone], "is not included in the list"
-  end
-
-  test "adapt! passes tone to the compiler" do
-    opp = professionals(:alice).opportunities.create!(
-      organization_name: "Acme",
-      posting: "A posting",
-      tone: "Enthusiastic"
-    )
-
-    with_fake_resume_generation do
-      opp.adapt!
-    end
-
-    assert opp.pdf.attached?
-  end
 end

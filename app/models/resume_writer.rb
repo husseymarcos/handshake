@@ -8,17 +8,17 @@ class ResumeWriter
     @chat = chat || RubyLLM.chat(model: llm_model, provider: :gemini)
   end
 
-  def generate(organization_name:, posting:, tone: nil)
-    GeneratedResume.from_response(ask_for_resume(organization_name:, posting:, tone:)).tap(&:source)
+  def generate(organization_name:, posting:)
+    GeneratedResume.from_response(ask_for_resume(organization_name:, posting:)).tap(&:source)
   end
 
   private
 
   attr_reader :professional, :chat
 
-  def ask_for_resume(organization_name:, posting:, tone:)
+  def ask_for_resume(organization_name:, posting:)
     chat.with_instructions(self.class.system_instructions)
-    chat.ask(prompt_for(organization_name:, posting:, tone:).to_s)
+    chat.ask(prompt_for(organization_name:, posting:).to_s)
     chat.messages.last&.content
   end
 
@@ -26,7 +26,7 @@ class ResumeWriter
     ENV.fetch("RUBYLLM_MODEL", "gemini-2.5-flash")
   end
 
-  def prompt_for(organization_name:, posting:, tone:)
-    ResumePrompt.new(professional:, organization_name:, posting:, tone:)
+  def prompt_for(organization_name:, posting:)
+    ResumePrompt.new(professional:, organization_name:, posting:)
   end
 end

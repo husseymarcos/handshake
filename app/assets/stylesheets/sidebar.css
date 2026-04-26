@@ -34,8 +34,13 @@
     padding: var(--space-lg) var(--space-xl) var(--space-xxl);
   }
 
+  .app-layout__main:has(.home-screen) {
+    padding-block-start: 0;
+  }
+
   .app-layout__main:has(.home-screen) .app-layout__content {
     padding-inline-end: 4rem;
+    padding-block-start: 0;
   }
 
   .sidebar-nav {
