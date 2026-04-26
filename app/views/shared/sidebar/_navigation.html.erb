@@ -12,7 +12,7 @@
   <% end %>
 
   <%= link_to opportunities_path,
-      class: class_names("sidebar-nav__link", "is-current": current_page?(opportunities_path)) do %>
+      class: class_names("sidebar-nav__link", "is-current": controller_name == "opportunities" && %w[index show].include?(action_name)) do %>
     <%= render "shared/icons/history" %>
     <span>History</span>
   <% end %>

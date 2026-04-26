@@ -6,6 +6,6 @@ class Opportunities::DownloadsController < ApplicationController
     send_data opportunity.pdf.download,
       filename: opportunity.pdf.filename.to_s,
       type: opportunity.pdf.content_type,
-      disposition: "attachment"
+      disposition: params.fetch(:disposition, "attachment")
   end
 end

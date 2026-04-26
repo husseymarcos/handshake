@@ -4,18 +4,21 @@
   <div class="show-header__top">
     <%= link_to "← See previous opportunities", opportunities_path, class: "show-header__back" %>
     <% if @opportunity.pdf.attached? %>
-      <%= link_to "Download PDF", opportunity_download_path(@opportunity), class: "btn btn--primary btn--small" %>
+      <%= link_to opportunity_download_path(@opportunity), class: "btn btn--primary btn--pill" do %>
+        <%= render "shared/icons/download" %>
+        Download PDF
+      <% end %>
     <% end %>
   </div>
 
   <div class="show-header__info">
-    <h1 class="show-header__title"><%= @opportunity.organization_name %></h1>
-    <p class="show-header__meta">Adapted <%= l @opportunity.created_at, format: :long %></p>
+    <h1 class="title title--hero"><%= @opportunity.organization_name %></h1>
+    <p class="show-header__meta">Adapted <%= l @opportunity.created_at, format: :long %> &middot; <%= time_ago_in_words(@opportunity.created_at) %> ago</p>
   </div>
 </div>
 
 <% if @opportunity.pdf.attached? %>
   <div class="pdf-viewer">
-    <iframe src="<%= rails_blob_path(@opportunity.pdf, disposition: :inline) %>" class="pdf-viewer__frame" title="Adapted resume for <%= @opportunity.organization_name %>"></iframe>
+    <iframe src="<%= opportunity_download_path(@opportunity, disposition: :inline) %>" class="pdf-viewer__frame" title="Adapted resume for <%= @opportunity.organization_name %>"></iframe>
   </div>
 <% end %>
