@@ -2,7 +2,9 @@ class OpportunitiesController < ApplicationController
   before_action :set_opportunity, only: %i[ show ]
 
   def index
-    @opportunities = Current.professional.opportunities.reverse_chronologically
+    @opportunities = Current.professional.opportunities
+                           .reverse_chronologically
+                           .search(params[:q])
   end
 
   def show

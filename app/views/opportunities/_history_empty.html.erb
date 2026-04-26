@@ -1,0 +1,8 @@
+<div class="card history-empty">
+  <% if params[:q].present? %>
+    <p class="history-empty__text">No applications match your search.</p>
+  <% else %>
+    <p class="history-empty__text">No applications yet.</p>
+  <% end %>
+  <%= link_to "Create your first", new_opportunity_path, class: "pill pill--accent" %>
+</div>

@@ -1,0 +1,17 @@
+<div class="history-table__row">
+  <div class="history-table__col history-table__col--organization">
+    <%= link_to opportunity.organization_name, opportunity_path(opportunity), class: "history-table__organization-name" %>
+  </div>
+  <div class="history-table__col history-table__col--date">
+    <div class="history-table__date"><%= l opportunity.created_at, format: :long %></div>
+    <div class="history-table__date-relative"><%= time_ago_in_words(opportunity.created_at) %> ago</div>
+  </div>
+  <div class="history-table__col history-table__col--actions">
+    <% if opportunity.pdf.attached? %>
+      <%= link_to opportunity_download_path(opportunity), class: "pill pill--with-icon" do %>
+        <%= render "shared/icons/download" %>
+        Download PDF
+      <% end %>
+    <% end %>
+  </div>
+</div>

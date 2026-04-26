@@ -1,0 +1,11 @@
+<div class="history-table card">
+  <div class="history-table__header">
+    <div class="history-table__col history-table__col--organization">Organization</div>
+    <div class="history-table__col history-table__col--date">Applied on</div>
+    <div class="history-table__col history-table__col--actions">Actions</div>
+  </div>
+
+  <% opportunities.each do |opportunity| %>
+    <%= render "history_row", opportunity: opportunity %>
+  <% end %>
+</div>

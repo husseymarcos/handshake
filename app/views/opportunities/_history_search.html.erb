@@ -1,0 +1,8 @@
+<div class="history-page__toolbar">
+  <%= form_with url: opportunities_path, method: :get, class: "history-search" do %>
+    <div class="history-search__icon">
+      <%= render "shared/icons/search" %>
+    </div>
+    <%= text_field_tag :q, params[:q], class: "history-search__input", placeholder: "Search by company, role, or keyword..." %>
+  <% end %>
+</div>

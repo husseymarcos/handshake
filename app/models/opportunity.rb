@@ -1,5 +1,8 @@
 class Opportunity < ApplicationRecord
   include ResumeGeneratable
+  include Searchable
+
+  search_by :organization_name, :posting
 
   belongs_to :professional
   has_one_attached :pdf
