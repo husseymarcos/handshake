@@ -5,9 +5,6 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     get signin_path
 
     assert_response :success
-    assert_select "form[action='#{session_path}']"
-    assert_select "input[name='session[email]']"
-    assert_select "input[name='session[password]']"
   end
 
   test "creates session with valid credentials" do

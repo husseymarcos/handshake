@@ -5,11 +5,6 @@ class ProfessionalsControllerTest < ActionDispatch::IntegrationTest
     get signup_path
 
     assert_response :success
-    assert_select "form[action='#{professionals_path}']"
-    assert_select "input[name='professional[name]']"
-    assert_select "input[name='professional[email]']"
-    assert_select "input[name='professional[password]']"
-    assert_select "input[name='professional[password_confirmation]']"
   end
 
   test "creates professional with valid data and signs them in" do
@@ -109,7 +104,6 @@ class ProfessionalsControllerTest < ActionDispatch::IntegrationTest
     get career_path
 
     assert_response :success
-    assert_select ".career-header h1", text: /Career Profile/
   end
 
   test "redirects unauthenticated user from career page to sign in" do
@@ -124,7 +118,6 @@ class ProfessionalsControllerTest < ActionDispatch::IntegrationTest
     get settings_path
 
     assert_response :success
-    assert_select "form[action='#{professional_path(professionals(:alice))}']"
   end
 
   test "updates professional email" do

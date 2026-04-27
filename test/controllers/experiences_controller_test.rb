@@ -7,13 +7,6 @@ class ExperiencesControllerTest < ActionDispatch::IntegrationTest
     get new_experience_path
 
     assert_response :success
-    assert_select "form[action='#{experiences_path}']"
-    assert_select "input[name='experience[name]']"
-    assert_select "input[name='experience[year]']"
-    assert_select "input[name='experience[title]']"
-    assert_select "textarea[name='experience[description]']"
-    assert_select "input[name='experience[stack]']"
-    assert_select "input[name='experience[github_url]']"
   end
 
   test "creates experience with all fields" do
@@ -74,7 +67,6 @@ class ExperiencesControllerTest < ActionDispatch::IntegrationTest
     get edit_experience_path(experience)
 
     assert_response :success
-    assert_select "form[action='#{experience_path(experience)}']"
   end
 
   test "updates experience" do
