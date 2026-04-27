@@ -109,7 +109,7 @@ class ProfessionalsControllerTest < ActionDispatch::IntegrationTest
     get career_path
 
     assert_response :success
-    assert_select ".page-header h1", text: /Portfolio/
+    assert_select ".career-header h1", text: /Career Profile/
   end
 
   test "redirects unauthenticated user from career page to sign in" do

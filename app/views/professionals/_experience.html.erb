@@ -1,12 +1,35 @@
-<li class="history-row">
-  <div>
-    <strong><%= experience.name %></strong>
-    <% if experience.year.present? %><span class="muted"> · <%= experience.year %></span><% end %>
-    <% if experience.title.present? %><div class="muted"><%= experience.title %></div><% end %>
+<li class="experience-card">
+  <div class="experience-card__thumbnail">
+    <%= render "shared/icons/rocket" %>
   </div>
 
-  <div class="action-row">
-    <%= link_to "Edit", edit_experience_path(experience), class: "link" %>
-    <%= button_to "Delete", experience_path(experience), method: :delete, class: "btn btn--link", form: { data: { turbo_confirm: "Delete this experience?" } } %>
+  <div class="experience-card__content">
+    <div class="experience-card__header">
+      <span class="experience-card__name"><%= experience.name %></span>
+      <% if experience.kind != 0 %>
+        <span class="experience-card__badge">Featured</span>
+      <% end %>
+    </div>
+
+    <% if experience.description.present? %>
+      <p class="experience-card__description"><%= experience.description %></p>
+    <% end %>
+
+    <% if experience.stack.present? %>
+      <div class="experience-card__stack">
+        <% experience.stack.split(",").map(&:strip).each do |tech| %>
+          <span class="experience-card__stack-item"><%= tech %></span>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="experience-card__actions">
+    <%= link_to edit_experience_path(experience), class: "btn btn--ghost btn--circle", title: "Edit project" do %>
+      <%= render "shared/icons/pencil" %>
+    <% end %>
+    <%= button_to experience_path(experience), method: :delete, class: "btn btn--ghost btn--circle", form: { data: { turbo_confirm: "Delete this project?" } }, title: "Delete project" do %>
+      <%= render "shared/icons/more" %>
+    <% end %>
   </div>
 </li>

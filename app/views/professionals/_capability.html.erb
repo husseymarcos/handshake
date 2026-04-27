@@ -1,4 +1,8 @@
 <li class="list-item">
-  <span class="pill pill--tag"><%= capability.name %></span>
-  <%= button_to "Remove", capability_path(capability), method: :delete, class: "btn btn--link", form: { data: { turbo_confirm: "Remove this capability?" } } %>
+  <span class="pill pill--tag">
+    <%= capability.name %>
+    <%= button_to capability_path(capability), method: :delete, class: "capability-tag__remove" do %>
+      &times;
+    <% end %>
+  </span>
 </li>

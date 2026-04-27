@@ -74,4 +74,33 @@
     inline-size: 1.1rem;
     block-size: 1.1rem;
   }
+
+  .pill--input {
+    padding: 0.3rem 0.8rem;
+    cursor: text;
+  }
+
+  .pill--input:focus-within {
+    border-color: var(--color-accent);
+    box-shadow: var(--focus-ring);
+  }
+
+  .pill-input {
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    inline-size: 5rem;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    min-block-size: auto;
+  }
+
+  .pill-input::placeholder {
+    color: var(--color-ink-muted);
+    opacity: 0.7;
+  }
 }

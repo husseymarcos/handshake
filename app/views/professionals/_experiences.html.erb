@@ -1,14 +1,25 @@
 <section class="card card--section">
-  <div class="row row--between">
-    <h2 class="title title--section">Experience</h2>
-    <%= link_to "Add experience", new_experience_path, class: "pill pill--accent" %>
+  <div class="section-header">
+    <div class="section-header__title-group">
+      <%= render "shared/icons/document", class: "section-header__icon" %>
+      <div class="section-header__text">
+        <h2 class="section-header__title">Projects</h2>
+        <p class="section-header__description">Showcase the projects you're proud of.</p>
+      </div>
+    </div>
+    <%= link_to new_experience_path, class: "pill pill--with-icon" do %>
+      <%= render "shared/icons/plus" %>
+      <span>Add project</span>
+    <% end %>
   </div>
 
   <% if professional.experiences.any? %>
     <ul class="list-plain">
       <%= render partial: "professionals/experience", collection: professional.experiences.chronologically %>
     </ul>
-  <% else %>
-    <p class="muted">Add experience so the AI can cite your background.</p>
+    <%= link_to experiences_path, class: "view-all-link" do %>
+      <span>View all projects</span>
+      <span>&rarr;</span>
+    <% end %>
   <% end %>
 </section>

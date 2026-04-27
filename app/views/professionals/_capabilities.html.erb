@@ -1,16 +1,21 @@
 <section class="card card--section">
-  <h2 class="title title--section">Capabilities</h2>
+  <div class="section-header">
+    <div class="section-header__title-group">
+      <%= render "shared/icons/sparkle", class: "section-header__icon" %>
+      <div class="section-header__text">
+        <h2 class="section-header__title">Skills</h2>
+        <p class="section-header__description">Add the skills and technologies you want to be known for.</p>
+      </div>
+    </div>
+  </div>
 
-  <%= form_with model: Capability.new, url: capabilities_path, class: "row" do |f| %>
-    <%= f.text_field :name, placeholder: "e.g. Ruby on Rails", class: "input input--massive-plain input--grow" %>
-    <%= f.submit "Add", class: "pill pill--accent" %>
-  <% end %>
-
-  <% if professional.capabilities.any? %>
-    <ul class="list-plain list-flex">
-      <%= render partial: "professionals/capability", collection: professional.capabilities.alphabetically %>
-    </ul>
-  <% else %>
-    <p class="muted">No capabilities yet — add a few you want emphasized on resumes.</p>
-  <% end %>
+  <ul class="list-plain list-flex">
+    <%= render partial: "professionals/capability", collection: professional.capabilities.alphabetically %>
+    <li class="list-item">
+      <%= form_with model: Capability.new, url: capabilities_path, class: "pill pill--with-icon pill--input" do |f| %>
+        <%= render "shared/icons/plus" %>
+        <%= f.text_field :name, placeholder: "Add skill", class: "pill-input", autocomplete: "off" %>
+      <% end %>
+    </li>
+  </ul>
 </section>

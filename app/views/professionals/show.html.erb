@@ -1,9 +1,5 @@
-<% content_for :title, "Portfolio — Handshake" %>
+<% content_for :title, "Career Profile — Handshake" %>
 
-<div class="page-header">
-  <h1 class="display title--compact">Portfolio</h1>
-  <p class="lede">Manage your capabilities and experience for tailored resume adaptation.</p>
-</div>
-
+<%= render "career_header", professional: @professional %>
 <%= render "capabilities", professional: @professional %>
 <%= render "experiences", professional: @professional %>
